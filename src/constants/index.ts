@@ -166,7 +166,7 @@ declare global {
 export let SUPPORTED_WALLETS: { [key: string]: WalletInfo } = !window.injectWeb3 ? SUPPORTED_WALLETS_CHROME : SUPPORTED_WALLETS_IN_WALLET
 
 setTimeout(()=>{
-  SUPPORTED_WALLETS = !window.injectWeb3 ? SUPPORTED_WALLETS_CHROME : SUPPORTED_WALLETS_IN_WALLET
+  SUPPORTED_WALLETS = SUPPORTED_WALLETS_CHROME
   console.debug('update wallet');
 }, 500);
 
