@@ -1,0 +1,22 @@
+{
+  "name": "VDSWAP",
+  "logoURI": "https://api.vdswap.com/logo.png",
+  "keywords": ["defi", "vdswap", "yield"],
+  "timestamp": "2021-03-12T03:40:34.305Z",
+  "tokens": [
+   {
+      "chainId": 888,
+      "address": "0xb9242bfdaf85ae907e9856498a14ff24aad08ed1",
+      "name": "FV",
+      "symbol": "FV",
+      "decimals": 18,
+      "logoURI": "https://admin.vdsvv.org/upload/20210518/440424105963f440dcbdc849ff29c7c6.png"
+    }
+ 
+  ],
+  "version": {
+    "major": 2,
+    "minor": 14,
+    "patch": 0
+  }
+}
