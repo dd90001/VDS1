@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { STAKING_GENESIS, REWARDS_DURATION_DAYS } from '../../state/stake/hooks'
 import { TYPE } from '../../theme'
 
-
 const MINUTE = 60
 const HOUR = MINUTE * 60
 const DAY = HOUR * 24
@@ -15,10 +14,7 @@ export function Countdown({ exactEnd, exactStart }: { exactEnd?: Date; exactStar
     exactEnd
   ])
   // const begin = useMemo(() => end - REWARDS_DURATION, [end])
-  const begin = useMemo(
-    () => (exactStart ? Math.floor(exactStart.getTime() / 1000) : STAKING_GENESIS),
-    [exactStart]
-  )
+  const begin = useMemo(() => (exactStart ? Math.floor(exactStart.getTime() / 1000) : STAKING_GENESIS), [exactStart])
   // get current time
   const [time, setTime] = useState(() => Math.floor(Date.now() / 1000))
   useEffect((): (() => void) | void => {
@@ -34,7 +30,7 @@ export function Countdown({ exactEnd, exactStart }: { exactEnd?: Date; exactStar
   const timeUntilGenesis = begin - time
   const timeUntilEnd = end - time
 
-  const {t}=useTranslation();
+  const { t } = useTranslation()
 
   let timeRemaining: number
   let message: string
@@ -60,14 +56,13 @@ export function Countdown({ exactEnd, exactStart }: { exactEnd?: Date; exactStar
   timeRemaining -= minutes * MINUTE
   const seconds = timeRemaining
 
-  if (days >= 365)
-  {
+  if (days >= 365) {
     return (
       <TYPE.black fontWeight={400}>
         {message}{' '}
         {Number.isFinite(timeRemaining) && (
           <code>
-           <b>{'>1 year'}</b>
+            <b>{'>1 year'}</b>
           </code>
         )}
       </TYPE.black>
@@ -86,4 +81,3 @@ export function Countdown({ exactEnd, exactStart }: { exactEnd?: Date; exactStar
     </TYPE.black>
   )
 }
-

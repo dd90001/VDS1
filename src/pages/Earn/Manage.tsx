@@ -53,7 +53,6 @@ const StyledDataCard = styled(DataCard)<{ bgColor?: any; showBackground?: any }>
   background: #3d51a5;
   z-index: 2;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
 `
 
 const StyledBottomCard = styled(DataCard)<{ dim: any }>`
@@ -73,7 +72,7 @@ const PoolData = styled(DataCard)`
 `
 
 const VoteCard = styled(DataCard)`
-  background: radial-gradient(90% 90% at 0% 0%,#41beec 0%,#123471 100%);
+  background: radial-gradient(90% 90% at 0% 0%, #41beec 0%, #123471 100%);
   overflow: hidden;
 `
 
@@ -166,7 +165,7 @@ export default function Manage({
     <PageWrapper gap="lg" justify="center">
       <RowBetween style={{ gap: '24px' }}>
         <TYPE.mediumHeader style={{ margin: 0 }}>
-          {currencyA?.symbol}-{currencyB?.symbol} {t("Liquidity Mining")}
+          {currencyA?.symbol}-{currencyB?.symbol} {t('Liquidity Mining')}
         </TYPE.mediumHeader>
         <DoubleCurrencyLogo currency0={currencyA ?? undefined} currency1={currencyB ?? undefined} size={40} />
       </RowBetween>
@@ -174,7 +173,7 @@ export default function Manage({
       <DataRow style={{ gap: '24px' }}>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}>{t("Total deposits")}</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}>{t('Total deposits')}</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
               {valueOfTotalStakedAmountInUSDC
                 ? `$${valueOfTotalStakedAmountInUSDC.toSignificant(6, { groupSeparator: ',' })}`
@@ -184,7 +183,7 @@ export default function Manage({
         </PoolData>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}>{t("Pool Rate")}</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}>{t('Pool Rate')}</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
               {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24 * 7).toString())
@@ -202,7 +201,7 @@ export default function Manage({
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>{t("Step 1. Get WanSwap Liquidity Pool token WSLP")}</TYPE.white>
+                <TYPE.white fontWeight={600}>{t('Step 1. Get WanSwap Liquidity Pool token WSLP')}</TYPE.white>
               </RowBetween>
               <RowBetween style={{ marginBottom: '1rem' }}>
                 <TYPE.white fontSize={14}>
@@ -254,9 +253,9 @@ export default function Manage({
               <CardNoise />
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>{t("Your liquidity deposits")}</TYPE.white>
+                  <TYPE.white fontWeight={600}>{t('Your liquidity deposits')}</TYPE.white>
                 </RowBetween>
-                <RowBetween style={{ alignItems: 'center', display:'flex',flexWrap:'wrap' }}>
+                <RowBetween style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap' }}>
                   <TYPE.white fontSize={36} fontWeight={600}>
                     {stakingInfo?.stakedAmount?.toSignificant(6) ?? '-'}
                   </TYPE.white>
@@ -273,21 +272,21 @@ export default function Manage({
             <AutoColumn gap="sm">
               <RowBetween>
                 <div>
-                  <TYPE.black>{t("Your unclaimed WASP")}</TYPE.black>
+                  <TYPE.black>{t('Your unclaimed WASP')}</TYPE.black>
                 </div>
                 {stakingInfo?.earnedAmount && JSBI.notEqual(BIG_INT_ZERO, stakingInfo?.earnedAmount?.raw) && (
                   <ButtonEmpty
-                    style={{color:'#FFE600'}}
+                    style={{ color: '#FFE600' }}
                     padding="8px"
                     borderRadius="8px"
                     width="fit-content"
                     onClick={() => setShowClaimRewardModal(true)}
                   >
-                    {t("Claim")}
+                    {t('Claim')}
                   </ButtonEmpty>
                 )}
               </RowBetween>
-              <RowBetween style={{ alignItems: 'center', display:'flex',flexWrap:'wrap' }}>
+              <RowBetween style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap' }}>
                 <TYPE.largeHeader fontSize={36} fontWeight={600}>
                   <CountUp
                     key={countUpAmount}
@@ -301,7 +300,7 @@ export default function Manage({
                 </TYPE.largeHeader>
                 <TYPE.black fontSize={20} fontWeight={500}>
                   <span id="animate-zoom" role="img" aria-label="wizard-icon" style={{ marginRight: '8px ' }}>
-                  ⚡
+                    ⚡
                   </span>
                   {stakingInfo?.rewardRate
                     ?.multiply((60 * 60 * 24 * 7).toString())
@@ -316,11 +315,11 @@ export default function Manage({
           <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px' }}>
             ⭐️
           </span>
-          {t("When you withdraw, the contract will automagically claim WASP on your behalf!")}
+          {t('When you withdraw, the contract will automagically claim WASP on your behalf!')}
         </TYPE.main>
 
         {!showAddLiquidityButton && (
-          <DataRow style={{ marginBottom: '1rem', gap:0 }}>
+          <DataRow style={{ marginBottom: '1rem', gap: 0 }}>
             <ButtonPrimary padding="8px" borderRadius="8px" width="160px" margin="6px" onClick={handleDepositClick}>
               {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? t('Deposit') : t('Deposit WSLP Tokens')}
             </ButtonPrimary>
@@ -328,20 +327,22 @@ export default function Manage({
             {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) && (
               <>
                 <ButtonPrimary
-                   margin="6px"
+                  margin="6px"
                   padding="8px"
                   borderRadius="8px"
                   width="160px"
                   onClick={() => setShowUnstakingModal(true)}
                 >
-                  {t("Withdraw")}
+                  {t('Withdraw')}
                 </ButtonPrimary>
               </>
             )}
           </DataRow>
         )}
         {!userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
-          <TYPE.main>{userLiquidityUnstaked.toSignificant(6)} {t("WSLP tokens available")}</TYPE.main>
+          <TYPE.main>
+            {userLiquidityUnstaked.toSignificant(6)} {t('WSLP tokens available')}
+          </TYPE.main>
         )}
       </PositionInfo>
     </PageWrapper>

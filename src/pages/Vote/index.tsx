@@ -60,7 +60,7 @@ const ProposalTitle = styled.span`
 `
 
 const VoteCard = styled(DataCard)`
-  background: radial-gradient(100% 90% at 20% 0%,#41beec 0%,#123471 100%);
+  background: radial-gradient(100% 90% at 20% 0%, #41beec 0%, #123471 100%);
   overflow: hidden;
 `
 
@@ -140,7 +140,7 @@ export default function Vote() {
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                 WASP tokens represent voting shares in Wanswap governance. You can vote on each proposal yourself or
+                  WASP tokens represent voting shares in Wanswap governance. You can vote on each proposal yourself or
                   delegate your votes to a third party.
                 </TYPE.white>
               </RowBetween>

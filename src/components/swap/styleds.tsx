@@ -11,19 +11,18 @@ export const Wrapper = styled.div`
 
 export const ArrowWrapper = styled.div<{ clickable: boolean }>`
   padding: 2px;
-  transition:0.2s all;
+  transition: 0.2s all;
   ${({ clickable }) =>
     clickable
       ? css`
           :hover {
             cursor: pointer;
             opacity: 0.8;
-            background:white;
-            color:#313131;
+            background: white;
+            color: #313131;
           }
           :hover svg {
-            
-            stroke:#313131;
+            stroke: #313131;
           }
         `
       : null}
@@ -32,7 +31,7 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
 export const SectionBreak = styled.div`
   height: 1px;
   width: 100%;
-  background-color: #FFFFFF80;
+  background-color: #ffffff80;
 `
 
 export const BottomGrouping = styled.div`
@@ -106,7 +105,7 @@ export const Dots = styled.span`
 
 const SwapCallbackErrorInner = styled.div`
   background-color: ${({ theme }) => transparentize(0.9, theme.red1)};
-  border-radius:10px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   font-size: 0.825rem;
@@ -128,7 +127,7 @@ const SwapCallbackErrorInnerAlertTriangle = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 12px;
-  border-radius:10px;
+  border-radius: 10px;
   min-width: 48px;
   height: 48px;
 `
@@ -148,6 +147,6 @@ export const SwapShowAcceptChanges = styled(AutoColumn)`
   background-color: ${({ theme }) => transparentize(0.9, theme.primary1)};
   color: ${({ theme }) => theme.primary1};
   padding: 0.5rem;
-  border-radius:10px;
+  border-radius: 10px;
   margin-top: 8px;
 `

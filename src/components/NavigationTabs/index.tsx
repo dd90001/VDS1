@@ -11,7 +11,7 @@ import QuestionHelper from '../QuestionHelper'
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
-  border-radius:10px;
+  border-radius: 10px;
   justify-content: space-evenly;
 `
 
@@ -24,7 +24,7 @@ const StyledNavLink = styled(NavLink).attrs({
   align-items: center;
   justify-content: center;
   height: 3rem;
-  border-radius:10px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -32,7 +32,7 @@ const StyledNavLink = styled(NavLink).attrs({
   font-size: 20px;
 
   &.${activeClassName} {
-    border-radius:10px;
+    border-radius: 10px;
     font-weight: 500;
     color: ${({ theme }) => theme.text1};
   }
@@ -90,13 +90,7 @@ export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating:
           <StyledArrowLeft />
         </HistoryLink>
         <ActiveText>{creating ? t('createAPair') : adding ? t('addLiquidity') : t('removeLiquidity')}</ActiveText>
-        <QuestionHelper
-          text={
-            adding
-              ? t('whenYouAddLiquidity')
-              : t('whenYouRemoveLiquidity')
-          }
-        />
+        <QuestionHelper text={adding ? t('whenYouAddLiquidity') : t('whenYouRemoveLiquidity')} />
       </RowBetween>
     </Tabs>
   )

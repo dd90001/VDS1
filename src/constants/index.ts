@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@wanswap/sdk'
 import { AbstractConnector } from '@web3-react-wan/abstract-connector'
 
-import {  wanwallet, metamask, walletconnect } from '../connectors'
+import { wanwallet, metamask, walletconnect } from '../connectors'
 
 export const ROUTER_ADDRESS = '0xeA300406FE2eED9CD2bF5c47D01BECa8Ad294Ec1'
 
@@ -21,17 +21,28 @@ export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 18, 'WBTC', 'Wrapped BTC')
 export const USDT1 = new Token(ChainId.ROPSTEN, '0x3d5950287b45f361774e5fb6e50d70eea06bc167', 6, 'wanUSDT', 'wanUSDT')
 
-export const wanOBTC = new Token(ChainId.MAINNET, '0xd15e200060fc17ef90546ad93c1c61bfefdc89c7', 8, 'wanOBTC', 'wanOBTC');
-export const wanBTC = new Token(ChainId.MAINNET, '0x50c439b6d602297252505a6799d84ea5928bcfb6', 8, 'wanBTC', 'wanBTC');
-export const wanETH = new Token(ChainId.MAINNET, '0xe3ae74d1518a76715ab4c7bedf1af73893cd435a', 18, 'wanETH', 'wanETH');
-export const wanLINK = new Token(ChainId.MAINNET, '0x06da85475f9d2ae79af300de474968cd5a4fde61', 18, 'wanLINK', 'wanLINK');
-export const wanUNI = new Token(ChainId.MAINNET, '0x73eaa7431b11b1e7a7d5310de470de09883529df', 18, 'wanUNI', 'wanUNI');
-export const wanSUSHI = new Token(ChainId.MAINNET, '0x9b6863f6ab2047069ad1cd15fff8c45af637d67c', 18, 'wanSUSHI', 'wanSUSHI');
+export const wanOBTC = new Token(ChainId.MAINNET, '0xd15e200060fc17ef90546ad93c1c61bfefdc89c7', 8, 'wanOBTC', 'wanOBTC')
+export const wanBTC = new Token(ChainId.MAINNET, '0x50c439b6d602297252505a6799d84ea5928bcfb6', 8, 'wanBTC', 'wanBTC')
+export const wanETH = new Token(ChainId.MAINNET, '0xe3ae74d1518a76715ab4c7bedf1af73893cd435a', 18, 'wanETH', 'wanETH')
+export const wanLINK = new Token(
+  ChainId.MAINNET,
+  '0x06da85475f9d2ae79af300de474968cd5a4fde61',
+  18,
+  'wanLINK',
+  'wanLINK'
+)
+export const wanUNI = new Token(ChainId.MAINNET, '0x73eaa7431b11b1e7a7d5310de470de09883529df', 18, 'wanUNI', 'wanUNI')
+export const wanSUSHI = new Token(
+  ChainId.MAINNET,
+  '0x9b6863f6ab2047069ad1cd15fff8c45af637d67c',
+  18,
+  'wanSUSHI',
+  'wanSUSHI'
+)
 
 // export const wanMKR = new Token(ChainId.MAINNET, '0xa31b67a8cba75ea6ced8340d8bc0431ab052a4fa', 18, 'wanMKR', 'wanMKR');
 // export const wanVIBE = new Token(ChainId.MAINNET, '0xde1a20792553b84ddb254ca78fa7c5996ad5fbe2', 18, 'wanVIBE', 'wanVIBE');
 // export const wanZCN = new Token(ChainId.MAINNET, '0xf1d0ad0c4a612ecf4931b673245f1fc2935bccdc', 18, 'wanZCN', 'wanZCN');
-
 
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
@@ -72,7 +83,17 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], wanBTC, wanETH, wanUNI, USDC, USDT, wanLINK, WASP[ChainId.MAINNET], wanSUSHI]
+  [ChainId.MAINNET]: [
+    ...WETH_ONLY[ChainId.MAINNET],
+    wanBTC,
+    wanETH,
+    wanUNI,
+    USDC,
+    USDT,
+    wanLINK,
+    WASP[ChainId.MAINNET],
+    wanSUSHI
+  ]
 }
 
 /**
@@ -94,13 +115,21 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], wanBTC, wanETH, USDC, USDT, wanLINK, wanUNI, WASP[ChainId.MAINNET], wanSUSHI]
+  [ChainId.MAINNET]: [
+    ...WETH_ONLY[ChainId.MAINNET],
+    wanBTC,
+    wanETH,
+    USDC,
+    USDT,
+    wanLINK,
+    wanUNI,
+    WASP[ChainId.MAINNET],
+    wanSUSHI
+  ]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
-  [ChainId.MAINNET]: [
-    [USDC, USDT],
-  ]
+  [ChainId.MAINNET]: [[USDC, USDT]]
 }
 
 export interface WalletInfo {
@@ -116,7 +145,6 @@ export interface WalletInfo {
 }
 
 const SUPPORTED_WALLETS_CHROME: { [key: string]: WalletInfo } = {
-
   METAMASK: {
     connector: metamask,
     name: 'MetaMask',
@@ -133,8 +161,8 @@ const SUPPORTED_WALLETS_CHROME: { [key: string]: WalletInfo } = {
     iconName: 'walletConnectIcon.svg',
     description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
     href: null,
-    color: '#4196FC',
-  },
+    color: '#4196FC'
+  }
 }
 
 const SUPPORTED_WALLETS_IN_WALLET: { [key: string]: WalletInfo } = {
@@ -144,7 +172,7 @@ const SUPPORTED_WALLETS_IN_WALLET: { [key: string]: WalletInfo } = {
     iconName: 'walletConnectIcon.svg',
     description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
     href: null,
-    color: '#4196FC',
+    color: '#4196FC'
   },
   WAN_WALLET: {
     connector: wanwallet,
@@ -159,16 +187,18 @@ const SUPPORTED_WALLETS_IN_WALLET: { [key: string]: WalletInfo } = {
 
 declare global {
   interface Window {
-    injectWeb3: any;
+    injectWeb3: any
   }
 }
 
-export let SUPPORTED_WALLETS: { [key: string]: WalletInfo } = !window.injectWeb3 ? SUPPORTED_WALLETS_CHROME : SUPPORTED_WALLETS_IN_WALLET
+export let SUPPORTED_WALLETS: { [key: string]: WalletInfo } = !window.injectWeb3
+  ? SUPPORTED_WALLETS_CHROME
+  : SUPPORTED_WALLETS_IN_WALLET
 
-setTimeout(()=>{
+setTimeout(() => {
   SUPPORTED_WALLETS = !window.injectWeb3 ? SUPPORTED_WALLETS_CHROME : SUPPORTED_WALLETS_IN_WALLET
-  console.debug('update wallet');
-}, 500);
+  console.debug('update wallet')
+}, 500)
 
 export const NetworkContextName = 'NETWORK'
 

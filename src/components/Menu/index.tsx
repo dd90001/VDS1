@@ -94,7 +94,7 @@ export default function Menu() {
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
   // const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
@@ -107,38 +107,40 @@ export default function Menu() {
         <MenuFlyout>
           <MenuItem id="link" href="https://twitter.com/wanswap">
             <Info size={14} />
-            {t("Twitter")}
+            {t('Twitter')}
           </MenuItem>
           <MenuItem id="link" href="https://medium.com/wanswap">
             <BookOpen size={14} />
-            {t("Blog")}
+            {t('Blog')}
           </MenuItem>
           <MenuItem id="link" href="https://docs.wanswap.finance/">
             <BookOpen size={14} />
-            {t("Docs")}
+            {t('Docs')}
           </MenuItem>
           <MenuItem id="link" href="http://bbs.zookeeper.finance/t/wanswap">
             <MessageCircle size={14} />
-            {t("Discussions")}
+            {t('Discussions')}
           </MenuItem>
           <MenuItem id="link" href="https://github.com/wanswap">
             <Code size={14} />
-            {t("Code")}
+            {t('Code')}
           </MenuItem>
           <MenuItem id="link" href="https://auction.wanswap.finance/">
             <Info size={14} />
             {t('auction')}
           </MenuItem>
-          { <MenuItem id="link" href="https://t.me/wanswap_official">
-            <MessageCircle size={14} />
-            {t("Telegram")}
-          </MenuItem>
-          
-          /*
+          {
+            <MenuItem id="link" href="https://t.me/wanswap_official">
+              <MessageCircle size={14} />
+              {t('Telegram')}
+            </MenuItem>
+
+            /*
           <MenuItem id="link" href="https://uniswap.info/">
             <PieChart size={14} />
             Analytics
-          </MenuItem> */}
+          </MenuItem> */
+          }
           {/* {account && (
             <ButtonPrimary onClick={openClaimModal} padding="8px 16px" width="100%" borderRadius="12px" mt="0.5rem">
               Claim WASP

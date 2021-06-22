@@ -13,7 +13,7 @@ import { useBridgeMinerContract } from '../../hooks/useContract'
 
 export const STAKING_GENESIS = 1606976660
 
-export const REWARDS_DURATION_DAYS = 365*2
+export const REWARDS_DURATION_DAYS = 365 * 2
 
 // TODO add staking rewards addresses here
 // export const STAKING_REWARDS_INFO: {
@@ -219,7 +219,8 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           )
         )
 
-        const allocPoint = poolInfo[poolInfo.findIndex(val => val.result?.lpToken === rewardsAddress)].result?.allocPoint
+        const allocPoint =
+          poolInfo[poolInfo.findIndex(val => val.result?.lpToken === rewardsAddress)].result?.allocPoint
 
         const getHypotheticalRewardRate = (
           stakedAmount: TokenAmount,

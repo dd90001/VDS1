@@ -196,22 +196,22 @@ export function useTrackedTokenPairs(): [Token, Token][] {
     () =>
       chainId
         ? flatMap(Object.keys(tokens), tokenAddress => {
-          const token = tokens[tokenAddress]
-          // for each token on the current chain,
-          return (
-            // loop though all bases on the current chain
-            (BASES_TO_TRACK_LIQUIDITY_FOR[chainId] ?? [])
-              // to construct pairs of the given token with each base
-              .map(base => {
-                if (base.address === token.address) {
-                  return null
-                } else {
-                  return [base, token]
-                }
-              })
-              .filter((p): p is [Token, Token] => p !== null)
-          )
-        })
+            const token = tokens[tokenAddress]
+            // for each token on the current chain,
+            return (
+              // loop though all bases on the current chain
+              (BASES_TO_TRACK_LIQUIDITY_FOR[chainId] ?? [])
+                // to construct pairs of the given token with each base
+                .map(base => {
+                  if (base.address === token.address) {
+                    return null
+                  } else {
+                    return [base, token]
+                  }
+                })
+                .filter((p): p is [Token, Token] => p !== null)
+            )
+          })
         : [],
     [tokens, chainId]
   )
@@ -249,33 +249,38 @@ export function useTrackedTokenPairs(): [Token, Token][] {
   }, [combinedList])
 }
 
-
-export function useTokenPairsWithLiquidityTokens(trackedTokenPairs: [Token, Token][]): { liquidityToken: Token; tokens: [Token, Token] }[] {
+export function useTokenPairsWithLiquidityTokens(
+  trackedTokenPairs: [Token, Token][]
+): { liquidityToken: Token; tokens: [Token, Token] }[] {
   const factory = useFactoryContract(FACTORY_ADDRESS)
 
-  const params = [] 
+  const params = []
 
-  for (let i=0; i<trackedTokenPairs.length; i++) {
+  for (let i = 0; i < trackedTokenPairs.length; i++) {
     params.push([trackedTokenPairs[i][0].address, trackedTokenPairs[i][1].address])
   }
 
-  const pairsFromFactory = useSingleContractMultipleData(factory, 'getPair', params);
+  const pairsFromFactory = useSingleContractMultipleData(factory, 'getPair', params)
   // console.debug('pairsFromFactory', pairsFromFactory);
   const pairs = useMemo(() => {
-    const tmpPairs : { liquidityToken: Token; tokens: [Token, Token] }[] = []
-    for (let i=0; i<pairsFromFactory.length; i++) {
+    const tmpPairs: { liquidityToken: Token; tokens: [Token, Token] }[] = []
+    for (let i = 0; i < pairsFromFactory.length; i++) {
       if (!pairsFromFactory[i].result) {
         continue
       }
       tmpPairs.push({
-        liquidityToken: new Token(trackedTokenPairs[i][0].chainId, pairsFromFactory[i].result!.pair, 18, 'WSLP', 'WanSwap Liquidity Pool Token'),
+        liquidityToken: new Token(
+          trackedTokenPairs[i][0].chainId,
+          pairsFromFactory[i].result!.pair,
+          18,
+          'WSLP',
+          'WanSwap Liquidity Pool Token'
+        ),
         tokens: trackedTokenPairs[i]
       })
       Pair.setAddress(trackedTokenPairs[i][0], trackedTokenPairs[i][1], pairsFromFactory[i].result!.pair)
     }
     return tmpPairs
-  }, [trackedTokenPairs, pairsFromFactory]);
-  return pairs;
+  }, [trackedTokenPairs, pairsFromFactory])
+  return pairs
 }
-
-

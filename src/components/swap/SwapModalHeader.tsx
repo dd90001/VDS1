@@ -35,7 +35,7 @@ export default function SwapModalHeader({
   const priceImpactSeverity = warningSeverity(priceImpactWithoutFee)
 
   const theme = useContext(ThemeContext)
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <AutoColumn gap={'md'} style={{ marginTop: '20px' }}>

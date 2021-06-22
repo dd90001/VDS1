@@ -22,7 +22,7 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   5: 'goerli.',
   42: 'kovan.',
   888: 'www.',
-  999: 'testnet.',
+  999: 'testnet.'
 }
 
 export function getEtherscanLink(

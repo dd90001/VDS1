@@ -27,13 +27,12 @@ import usePrevious from '../../hooks/usePrevious'
 import { BIG_INT_ZERO } from '../../constants'
 import { useTranslation } from 'react-i18next'
 
-
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
   width: 100%;
 `
 
-const PositionInfo = styled(AutoColumn) <{ dim: any }>`
+const PositionInfo = styled(AutoColumn)<{ dim: any }>`
   position: relative;
   max-width: 640px;
   width: 100%;
@@ -46,14 +45,13 @@ const BottomSection = styled(AutoColumn)`
   position: relative;
 `
 
-const StyledDataCard = styled(DataCard) <{ bgColor?: any; showBackground?: any }>`
+const StyledDataCard = styled(DataCard)<{ bgColor?: any; showBackground?: any }>`
   background: #3d51a5;
   z-index: 2;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
 `
 
-const StyledBottomCard = styled(DataCard) <{ dim: any }>`
+const StyledBottomCard = styled(DataCard)<{ dim: any }>`
   background: ${({ theme }) => theme.bg3};
   opacity: ${({ dim }) => (dim ? 0.4 : 1)};
   margin-top: -40px;
@@ -114,7 +112,6 @@ export default function ManageHive({
   let valueOfTotalStakedAmountInWLSP: TokenAmount | undefined
 
   if (totalSupplyOfStakingToken && tokenA && stakingInfo && WETH) {
-
     valueOfTotalStakedAmountInWLSP = new TokenAmount(
       WETH,
       JSBI.multiply(stakingInfo.totalStakedAmount.raw, JSBI.BigInt(1))
@@ -140,7 +137,7 @@ export default function ManageHive({
     <PageWrapper gap="lg" justify="center">
       <RowBetween style={{ gap: '24px' }}>
         <TYPE.mediumHeader style={{ margin: 0 }}>
-          {currencyA?.symbol} {t("in Hive")}
+          {currencyA?.symbol} {t('in Hive')}
         </TYPE.mediumHeader>
         <CurrencyLogo currency={currencyA ?? undefined} size={'40px'} />
       </RowBetween>
@@ -148,7 +145,7 @@ export default function ManageHive({
       <DataRow style={{ gap: '24px' }}>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}>{t("Total deposits")}</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}>{t('Total deposits')}</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
               {`${valueOfTotalStakedAmountInWLSP?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} WASP`}
             </TYPE.body>
@@ -156,10 +153,10 @@ export default function ManageHive({
         </PoolData>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}>{t("Pool Rate")}</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}>{t('Pool Rate')}</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
               {stakingInfo?.totalRewardRate
-                ?.multiply((60 * 60 * 24 * 7/5).toString())
+                ?.multiply(((60 * 60 * 24 * 7) / 5).toString())
                 ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
               {' WAN / week'}
             </TYPE.body>
@@ -195,15 +192,13 @@ export default function ManageHive({
               <CardNoise />
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white fontWeight={600}>{t("Your WASP deposits")}</TYPE.white>
+                  <TYPE.white fontWeight={600}>{t('Your WASP deposits')}</TYPE.white>
                 </RowBetween>
-                <RowBetween style={{ alignItems: 'center', display:'flex',flexWrap:'wrap' }}>
+                <RowBetween style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap' }}>
                   <TYPE.white fontSize={36} fontWeight={600}>
                     {stakingInfo?.stakedAmount?.toSignificant(6) ?? '-'}
                   </TYPE.white>
-                  <TYPE.white>
-                    {currencyA?.symbol}
-                  </TYPE.white>
+                  <TYPE.white>{currencyA?.symbol}</TYPE.white>
                 </RowBetween>
               </AutoColumn>
             </CardSection>
@@ -214,7 +209,7 @@ export default function ManageHive({
             <AutoColumn gap="sm">
               <RowBetween>
                 <div>
-                  <TYPE.black>{t("Your unclaimed WAN")}</TYPE.black>
+                  <TYPE.black>{t('Your unclaimed WAN')}</TYPE.black>
                 </div>
                 {stakingInfo?.earnedAmount && JSBI.notEqual(BIG_INT_ZERO, stakingInfo?.earnedAmount?.raw) && (
                   <ButtonEmpty
@@ -224,11 +219,11 @@ export default function ManageHive({
                     width="fit-content"
                     onClick={() => setShowClaimRewardModal(true)}
                   >
-                    {t("Claim")}
+                    {t('Claim')}
                   </ButtonEmpty>
                 )}
               </RowBetween>
-              <RowBetween style={{ alignItems: 'center', display:'flex',flexWrap:'wrap' }}>
+              <RowBetween style={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap' }}>
                 <TYPE.largeHeader fontSize={36} fontWeight={600}>
                   <CountUp
                     key={countUpAmount}
@@ -245,7 +240,7 @@ export default function ManageHive({
                     ⚡
                   </span>
                   {stakingInfo?.rewardRate
-                    ?.multiply((60 * 60 * 24 * 7/5).toString())
+                    ?.multiply(((60 * 60 * 24 * 7) / 5).toString())
                     ?.toFixed(4, { groupSeparator: ',' }) ?? '-'}
                   {' WAN / week'}
                 </TYPE.black>
@@ -257,25 +252,25 @@ export default function ManageHive({
           <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px' }}>
             ⭐️
           </span>
-          {t("When you withdraw, the contract will automagically claim WAN on your behalf!")}
+          {t('When you withdraw, the contract will automagically claim WAN on your behalf!')}
         </TYPE.main>
 
         {!showAddLiquidityButton && (
-          <DataRow style={{ marginBottom: '1rem',gap:0 }}>
-            <ButtonPrimary padding="8px" borderRadius="8px" width="260px"  margin="6px" onClick={handleDepositClick}>
+          <DataRow style={{ marginBottom: '1rem', gap: 0 }}>
+            <ButtonPrimary padding="8px" borderRadius="8px" width="260px" margin="6px" onClick={handleDepositClick}>
               {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? t('Deposit') : t('Deposit WASP Tokens')}
             </ButtonPrimary>
 
             {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) && (
               <>
                 <ButtonPrimary
-                   margin="6px"
+                  margin="6px"
                   padding="8px"
                   borderRadius="8px"
                   width="260px"
                   onClick={() => setShowUnstakingModal(true)}
                 >
-                  {t("Withdraw")}
+                  {t('Withdraw')}
                 </ButtonPrimary>
               </>
             )}

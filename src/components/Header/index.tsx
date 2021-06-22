@@ -14,9 +14,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
 import { CardNoise } from '../earn/styled'
 import { CountUp } from 'use-count-up'
-import { TYPE, 
-  ExternalLink 
-} from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -47,8 +45,8 @@ const HeaderFrame = styled.div`
   padding: 1rem;
   z-index: 2;
 
-  padding-left:80px;
-  padding-right:80px;
+  padding-left: 80px;
+  padding-right: 80px;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
@@ -140,14 +138,14 @@ const UNIAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: #FFE600;
+  background: #ffe600;
 `
 
 const UNIWrapper = styled.span`
   width: fit-content;
   position: relative;
   cursor: pointer;
-  margin:0 8px;
+  margin: 0 8px;
   :hover {
     opacity: 0.8;
   }
@@ -164,9 +162,9 @@ const HideSmall = styled.span`
 `
 
 const NetworkCard = styled(YellowCard)`
-border-radius:10px;
+  border-radius: 10px;
   padding: 8px 12px;
-  background:white;
+  background: white;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     margin: 0;
     margin-right: 0.5rem;
@@ -212,7 +210,7 @@ const StyledNavLink = styled(NavLink).attrs({
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
-  border-radius:10px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -223,7 +221,7 @@ const StyledNavLink = styled(NavLink).attrs({
   font-weight: 500;
 
   &.${activeClassName} {
-    border-radius:10px;
+    border-radius: 10px;
     font-weight: 600;
     color: ${({ theme }) => theme.text1};
   }
@@ -239,7 +237,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 })<{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
-  border-radius:10px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
   text-decoration: none;
@@ -279,7 +277,6 @@ export default function Header() {
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
 
-
   const toggleClaimModal = useToggleSelfClaimModal()
 
   const availableClaim: boolean = useUserHasAvailableClaim(account)
@@ -300,13 +297,11 @@ export default function Header() {
       <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
-      <img id="logo-full" style={{display:'none'}} height={'60px'} src="./images/Logo_Whiteyellow.svg" alt="logo" />
+      <img id="logo-full" style={{ display: 'none' }} height={'60px'} src="./images/Logo_Whiteyellow.svg" alt="logo" />
       <HeaderRow>
-      
         <Title href="." id="logo-wrapper">
           <UniIcon>
             <img id="logo-symbol" width={'36px'} src={Logo} alt="logo" />
-            
           </UniIcon>
         </Title>
         <HeaderLinks>
@@ -326,7 +321,7 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
- 
+
           <StyledExternalLink id={`stake-nav-link`} href={'https://info.wanswap.finance'}>
             {t('statistics')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
@@ -375,7 +370,7 @@ export default function Header() {
                     <TYPE.white
                       style={{
                         paddingRight: '.4rem',
-                        color:'#313131'
+                        color: '#313131'
                       }}
                     >
                       <CountUp
@@ -388,13 +383,12 @@ export default function Header() {
                       />
                     </TYPE.white>
                   </HideSmall>
-                )?
-                (
+                ) ? (
                   <HideSmall>
                     <TYPE.white
                       style={{
                         paddingRight: '.4rem',
-                        color:'#313131'
+                        color: '#313131'
                       }}
                     >
                       <CountUp
@@ -407,17 +401,20 @@ export default function Header() {
                       />
                     </TYPE.white>
                   </HideSmall>
-                )
-                :
-                <img style={{marginLeft:'-10px',marginRight:'5px'}} height={'52px'} src="./images/Logomark_WASP_token.svg" alt="logo" />
-                
-              }
+                ) : (
+                  <img
+                    style={{ marginLeft: '-10px', marginRight: '5px' }}
+                    height={'52px'}
+                    src="./images/Logomark_WASP_token.svg"
+                    alt="logo"
+                  />
+                )}
                 WASP
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>
           )}
-          <AccountElement active={!!account} style={{ pointerEvents: 'auto' }} >
+          <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
                 {userEthBalance?.toSignificant(4)} WAN

@@ -26,16 +26,15 @@ const StatContainer = styled.div`
   margin-bottom: 1rem;
   margin-right: 1rem;
   margin-left: 1rem;
-  
 `
 
 const Wrapper = styled(AutoColumn)<{ showBackground: boolean; bgColor: any }>`
-border-radius:10px;
+  border-radius: 10px;
   width: 100%;
   overflow: hidden;
   position: relative;
   opacity: ${({ showBackground }) => (showBackground ? '1' : '1')};
-  background: radial-gradient(100% 90% at 20% 0%,#41beec 0%,#123471 100%);
+  background: radial-gradient(100% 90% at 20% 0%, #41beec 0%, #123471 100%);
   color: ${({ theme, showBackground }) => (showBackground ? theme.white : theme.text1)} !important;
 
   ${({ showBackground }) =>
@@ -51,7 +50,7 @@ const TopSection = styled.div`
   align-items: center;
   padding: 1rem;
   z-index: 1;
-  position:relative;
+  position: relative;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     grid-template-columns: 48px 1fr 96px;
   `};
@@ -82,20 +81,19 @@ const BottomSection = styled.div<{ showBackground: boolean }>`
   z-index: 1;
 `
 
-
 const Multiplier = styled.span`
-font-weight: 500;
-    text-align: center;
-    border-radius: 5px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 5px;
 
-    margin-left: 10px;
-    padding: 0px 5px;
-    font-size: 16px;
-    color: #2172E5;
-    border: 1px solid #FFE600;
-    color: #FFE600;
-    background: transparent;
-    ${({ theme }) => theme.mediaWidth.upToSmall`
+  margin-left: 10px;
+  padding: 0px 5px;
+  font-size: 16px;
+  color: #2172e5;
+  border: 1px solid #ffe600;
+  color: #ffe600;
+  background: transparent;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
       position:absolute;
       bottom:-23px;
       left:5px;
@@ -104,11 +102,11 @@ font-weight: 500;
 
 declare global {
   interface Window {
-    tvlItems: any;
+    tvlItems: any
   }
 }
 
-export default function PoolCard({ stakingInfo, hide }: { stakingInfo: StakingInfo, hide?: Boolean }) {
+export default function PoolCard({ stakingInfo, hide }: { stakingInfo: StakingInfo; hide?: boolean }) {
   const token0 = stakingInfo.tokens[0]
   const token1 = stakingInfo.tokens[1]
 
@@ -126,10 +124,9 @@ export default function PoolCard({ stakingInfo, hide }: { stakingInfo: StakingIn
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
   const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
 
-  const baseAllocPoint = 200;
-  const multiplier = stakingInfo.allocPoint && Number(stakingInfo.allocPoint?.toString()) / baseAllocPoint;
+  const baseAllocPoint = 200
+  const multiplier = stakingInfo.allocPoint && Number(stakingInfo.allocPoint?.toString()) / baseAllocPoint
   // console.log('multiplier', currency0.symbol, currency1.symbol, multiplier?.toString(), stakingInfo.allocPoint?.toString());
-
 
   // let returnOverMonth: Percent = new Percent('0')
   let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
@@ -157,12 +154,21 @@ export default function PoolCard({ stakingInfo, hide }: { stakingInfo: StakingIn
   const USDPrice = useUSDCPrice(WETH)
   const valueOfTotalStakedAmountInUSDC =
     valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
-  
+
   const { chainId } = useActiveWeb3React()
   const uni = chainId ? WASP[chainId] : undefined
   const uniPrice = useUSDCPrice(uni)
   const weekReward = stakingInfo.totalRewardRate?.multiply(`${60 * 60 * 24 * 7}`)?.toFixed(0)
-  const apy = valueOfTotalStakedAmountInUSDC && weekReward && uniPrice ? (Number(weekReward) * Number(uniPrice?.toFixed(8)) / Number(valueOfTotalStakedAmountInUSDC.toFixed(0)) / 7 * 365 * 100).toFixed(0) : '--' 
+  const apy =
+    valueOfTotalStakedAmountInUSDC && weekReward && uniPrice
+      ? (
+          ((Number(weekReward) * Number(uniPrice?.toFixed(8))) /
+            Number(valueOfTotalStakedAmountInUSDC.toFixed(0)) /
+            7) *
+          365 *
+          100
+        ).toFixed(0)
+      : '--'
 
   if (valueOfTotalStakedAmountInUSDC && stakingTokenPair) {
     if (!window.tvlItems) {
@@ -171,84 +177,81 @@ export default function PoolCard({ stakingInfo, hide }: { stakingInfo: StakingIn
     window.tvlItems[stakingTokenPair!.liquidityToken.address] = valueOfTotalStakedAmountInUSDC.toFixed(0)
   }
 
-  const isActive = Boolean(stakingInfo.totalRewardRate.greaterThan('0'));
+  const isActive = Boolean(stakingInfo.totalRewardRate.greaterThan('0'))
 
   return (
     <React.Fragment>
-      {
-        !hide &&   <div>
-        <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
-        <CardBGImage desaturate />
-        <CardNoise />
-  
-        <TopSection>
-          <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={24} />
-          <TYPE.white fontWeight={600} fontSize={18} style={{ marginLeft: '8px' }}>
-            {currency0.symbol} / {currency1.symbol} 
-            {
-              !isActive && <SpanFinished>{t("Inactive")}</SpanFinished>
-            }
-            <Multiplier>
-            {
-              multiplier+'x'
-            }
-            </Multiplier>
-          </TYPE.white>
-  
-          <StyledInternalLink to={`/farm/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '100%',color:'transparent' }}>
-            <ButtonPrimary padding="8px" borderRadius="8px">
-              {isStaking ? t('Manage') : t('Deposit')}
-            </ButtonPrimary>
-          </StyledInternalLink>
-        </TopSection>
-  
-        <StatContainer>
-          <RowBetween>
-            <TYPE.white><DepositTitle>{t('totalDeposited')}</DepositTitle></TYPE.white>
-            <TYPE.white>
-              {valueOfTotalStakedAmountInUSDC
-                ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })} 馃敟 APY: ${apy}%`
-                //  +
-                //   ' / ' +
-                //   `${valueOfTotalStakedAmountInWLSP?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} WSLP`
-                : `${valueOfTotalStakedAmountInWLSP?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} WSLP`}
-            </TYPE.white>
-          </RowBetween>
-          <PoolRate>
-          <RowBetween>
-            
-            <TYPE.white> {t("Pool rate")} </TYPE.white>
-            <TYPE.white>{`${stakingInfo.totalRewardRate
-              ?.multiply(`${60 * 60 * 24 * 7}`)
-              ?.toFixed(0, { groupSeparator: ',' })} WASP / week`}</TYPE.white>
-              
-          </RowBetween>
-          </PoolRate>
-        </StatContainer>
-  
-        {isStaking && (
-          <>
-            <Break />
-            <BottomSection showBackground={true}>
-              <TYPE.black color={'white'} fontWeight={500}>
-                <span>Your rate</span>
-              </TYPE.black>
-  
-              <TYPE.black style={{ textAlign: 'right' }} color={'white'} fontWeight={500}>
-                <span  id="animate-zoom" role="img" aria-label="wizard-icon" style={{ marginRight: '0.5rem' }}>
-                鈿�                </span>
-                {`${stakingInfo.rewardRate
-                  ?.multiply(`${60 * 60 * 24 * 7}`)
-                  ?.toFixed(0, { groupSeparator: ',' })} WASP / week`}
-              </TYPE.black>
-            </BottomSection>
-          </>
-        )}
-      </Wrapper>
-      
-    </div>
-    }
-  </React.Fragment>
+      {!hide && (
+        <div>
+          <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
+            <CardBGImage desaturate />
+            <CardNoise />
+
+            <TopSection>
+              <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={24} />
+              <TYPE.white fontWeight={600} fontSize={18} style={{ marginLeft: '8px' }}>
+                {currency0.symbol} / {currency1.symbol}
+                {!isActive && <SpanFinished>{t('Inactive')}</SpanFinished>}
+                <Multiplier>{multiplier + 'x'}</Multiplier>
+              </TYPE.white>
+
+              <StyledInternalLink
+                to={`/farm/${currencyId(currency0)}/${currencyId(currency1)}`}
+                style={{ width: '100%', color: 'transparent' }}
+              >
+                <ButtonPrimary padding="8px" borderRadius="8px">
+                  {isStaking ? t('Manage') : t('Deposit')}
+                </ButtonPrimary>
+              </StyledInternalLink>
+            </TopSection>
+
+            <StatContainer>
+              <RowBetween>
+                <TYPE.white>
+                  <DepositTitle>{t('totalDeposited')}</DepositTitle>
+                </TYPE.white>
+                <TYPE.white>
+                  {valueOfTotalStakedAmountInUSDC
+                    ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })} 馃敟 APY: ${apy}%`
+                    : //  +
+                      //   ' / ' +
+                      //   `${valueOfTotalStakedAmountInWLSP?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} WSLP`
+                      `${valueOfTotalStakedAmountInWLSP?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} WSLP`}
+                </TYPE.white>
+              </RowBetween>
+              <PoolRate>
+                <RowBetween>
+                  <TYPE.white> {t('Pool rate')} </TYPE.white>
+                  <TYPE.white>{`${stakingInfo.totalRewardRate
+                    ?.multiply(`${60 * 60 * 24 * 7}`)
+                    ?.toFixed(0, { groupSeparator: ',' })} WASP / week`}</TYPE.white>
+                </RowBetween>
+              </PoolRate>
+            </StatContainer>
+
+            {isStaking && (
+              <>
+                <Break />
+                <BottomSection showBackground={true}>
+                  <TYPE.black color={'white'} fontWeight={500}>
+                    <span>Your rate</span>
+                  </TYPE.black>
+
+                  <TYPE.black style={{ textAlign: 'right' }} color={'white'} fontWeight={500}>
+                    <span id="animate-zoom" role="img" aria-label="wizard-icon" style={{ marginRight: '0.5rem' }}>
+                      鈿�{' '}
+                    </span>
+                    {`${stakingInfo.rewardRate
+                      ?.multiply(`${60 * 60 * 24 * 7}`)
+                      ?.toFixed(0, { groupSeparator: ',' })} WASP / week`}
+                  </TYPE.black>
+                </BottomSection>
+              </>
+            )}
+          </Wrapper>
+        </div>
+      )}
+    </React.Fragment>
   )
 }
 
@@ -258,4 +261,4 @@ const SpanFinished = styled.span`
   border-radius: 15px;
   font-size: 10px;
   margin-left: 10px;
-`;
+`

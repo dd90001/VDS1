@@ -108,7 +108,7 @@ export default function Pool() {
   // console.debug('liquidityTokensWithBalances', liquidityTokensWithBalances);
 
   const v2Pairs = usePairs(liquidityTokensWithBalances.map(({ tokens }) => tokens))
-  console.debug('v2Pairs', v2Pairs);
+  console.debug('v2Pairs', v2Pairs)
   const v2IsLoading =
     fetchingV2PairBalances || v2Pairs?.length < liquidityTokensWithBalances.length || v2Pairs?.some(V2Pair => !V2Pair)
   console.debug('v2IsLoading', v2IsLoading)
@@ -131,9 +131,7 @@ export default function Pool() {
                 <TYPE.white fontWeight={600}>{t('liquidityProviderRewards')}</TYPE.white>
               </RowBetween>
               <RowBetween>
-                <TYPE.white fontSize={14}>
-                  {t('liquidityHelper')}
-                </TYPE.white>
+                <TYPE.white fontSize={14}>{t('liquidityHelper')}</TYPE.white>
               </RowBetween>
               <ExternalLink
                 style={{ color: 'white', textDecoration: 'underline' }}
@@ -196,12 +194,12 @@ export default function Pool() {
                 ))}
               </>
             ) : (
-                    <EmptyProposals>
-                      <TYPE.body color={theme.text3} textAlign="center">
-                        {t('noLiquidityFound')}
-                      </TYPE.body>
-                    </EmptyProposals>
-                  )}
+              <EmptyProposals>
+                <TYPE.body color={theme.text3} textAlign="center">
+                  {t('noLiquidityFound')}
+                </TYPE.body>
+              </EmptyProposals>
+            )}
 
             <AutoColumn justify={'center'} gap="md">
               <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>

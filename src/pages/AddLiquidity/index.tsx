@@ -212,7 +212,7 @@ export default function AddLiquidity({
   const modalHeader = () => {
     return noLiquidity ? (
       <AutoColumn gap="0px">
-        <LightCard mt="20px" borderRadius="20px"  style={{background:'transparent',paddingLeft:0,paddingRight:0}}>
+        <LightCard mt="20px" borderRadius="20px" style={{ background: 'transparent', paddingLeft: 0, paddingRight: 0 }}>
           <RowFlat>
             <Text fontSize="30px" fontWeight={500} lineHeight="26px" marginRight={10}>
               {currencies[Field.CURRENCY_A]?.symbol + '/' + currencies[Field.CURRENCY_B]?.symbol}
@@ -243,8 +243,7 @@ export default function AddLiquidity({
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
-          {t('outputIsEstimated2') + `${allowedSlippage /
-            100}`+t('outputIsEstimated3')}
+          {t('outputIsEstimated2') + `${allowedSlippage / 100}` + t('outputIsEstimated3')}
         </TYPE.italic>
       </AutoColumn>
     )
@@ -410,7 +409,9 @@ export default function AddLiquidity({
                           width={approvalB !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalA === ApprovalState.PENDING ? (
-                            <Dots>{t('approving')} {currencies[Field.CURRENCY_A]?.symbol}</Dots>
+                            <Dots>
+                              {t('approving')} {currencies[Field.CURRENCY_A]?.symbol}
+                            </Dots>
                           ) : (
                             t('approve') + currencies[Field.CURRENCY_A]?.symbol
                           )}
@@ -423,7 +424,9 @@ export default function AddLiquidity({
                           width={approvalA !== ApprovalState.APPROVED ? '48%' : '100%'}
                         >
                           {approvalB === ApprovalState.PENDING ? (
-                            <Dots>{t('approving')} {currencies[Field.CURRENCY_B]?.symbol}</Dots>
+                            <Dots>
+                              {t('approving')} {currencies[Field.CURRENCY_B]?.symbol}
+                            </Dots>
                           ) : (
                             t('approve') + currencies[Field.CURRENCY_B]?.symbol
                           )}

@@ -1,6 +1,6 @@
 import { CurrencyAmount, JSBI, Token, Trade } from '@wanswap/sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { ArrowDown,ChevronDown,ChevronUp,LogIn } from 'react-feather'
+import { ArrowDown, ChevronDown, ChevronUp, LogIn } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
@@ -93,7 +93,10 @@ export default function Swap() {
 
   const inputAmount = useMemo(() => tryParseAmount(typedValue, currencies[Field.INPUT]), [currencies, typedValue])
 
-  const [approvalConvert, approvalConvertCallback] = useApproveCallback(inputAmount, chainId && TOKEN_CONVERT_ADDRESS[chainId])
+  const [approvalConvert, approvalConvertCallback] = useApproveCallback(
+    inputAmount,
+    chainId && TOKEN_CONVERT_ADDRESS[chainId]
+  )
 
   const { convertType, execute: onConvert, inputError: convertInputError } = useTokenConvertCallback(
     currencies[Field.INPUT],
@@ -114,8 +117,8 @@ export default function Swap() {
     [Version.v1]: v1Trade,
     [Version.v2]: v2Trade
   }
-  const trade = showWrap || showConvert? undefined : tradesByVersion[toggledVersion]
-  const defaultTrade = showWrap || showConvert? undefined : tradesByVersion[DEFAULT_VERSION]
+  const trade = showWrap || showConvert ? undefined : tradesByVersion[toggledVersion]
+  const defaultTrade = showWrap || showConvert ? undefined : tradesByVersion[DEFAULT_VERSION]
 
   // TODO: remove
   const betterTradeLinkVersion: Version | undefined =
@@ -125,15 +128,16 @@ export default function Swap() {
       ? Version.v2
       : undefined
 
-  const parsedAmounts = showWrap || showConvert
-    ? {
-        [Field.INPUT]: parsedAmount,
-        [Field.OUTPUT]: parsedAmount
-      }
-    : {
-        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
-      }
+  const parsedAmounts =
+    showWrap || showConvert
+      ? {
+          [Field.INPUT]: parsedAmount,
+          [Field.OUTPUT]: parsedAmount
+        }
+      : {
+          [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+          [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
+        }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   const isValid = !swapInputError
@@ -169,9 +173,10 @@ export default function Swap() {
 
   const formattedAmounts = {
     [independentField]: typedValue,
-    [dependentField]: showWrap || showConvert
-      ? parsedAmounts[independentField]?.toExact() ?? ''
-      : parsedAmounts[dependentField]?.toSignificant(6) ?? ''
+    [dependentField]:
+      showWrap || showConvert
+        ? parsedAmounts[independentField]?.toExact() ?? ''
+        : parsedAmounts[dependentField]?.toSignificant(6) ?? ''
   }
 
   const route = trade?.route
@@ -289,7 +294,7 @@ export default function Swap() {
         tokens={urlLoadedTokens}
         onConfirm={handleConfirmTokenWarning}
       />
-      <img src="./images/Logo_Whiteyellow.svg" id="center-logo" width="400" alt="logo"/>
+      <img src="./images/Logo_Whiteyellow.svg" id="center-logo" width="400" alt="logo" />
       <AppBody>
         <SwapPoolTabs active={'swap'} />
         <Wrapper id="swap-page">
@@ -309,7 +314,9 @@ export default function Swap() {
 
           <AutoColumn gap={'md'}>
             <CurrencyInputPanel
-              label={independentField === Field.OUTPUT && !showWrap && !showConvert && trade ? t('fromEstimated') : t('from')}
+              label={
+                independentField === Field.OUTPUT && !showWrap && !showConvert && trade ? t('fromEstimated') : t('from')
+              }
               value={formattedAmounts[Field.INPUT]}
               showMaxButton={!atMaxAmountInput}
               currency={currencies[Field.INPUT]}
@@ -319,26 +326,41 @@ export default function Swap() {
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
             />
-            <AutoColumn justify="space-between" style={{marginTop:'-30px',marginBottom:'-30px',position:'relative',zIndex:2}}>
-              <AutoRow justify='center' style={{ padding: '0 1rem' }}>
-                <ArrowWrapper onClick={() => {
-                      setApprovalSubmitted(false) // reset 2 step UI for approvals
-                      onSwitchTokens()
-                    }} clickable style={{borderRadius:"50%",border:'1px solid white',padding:5,marginTop:0,marginBottom:0,width:35,height:35,lineHeight:'25px',paddingTop:10,display:'inline-flex'}}>
-                  <ChevronDown style={{marginRight:'-5px'}}
-                    size="14" color={theme.text2}
-                  />
-                  <ChevronUp
-                    size="14" color={theme.text2}
-                  />
+            <AutoColumn
+              justify="space-between"
+              style={{ marginTop: '-30px', marginBottom: '-30px', position: 'relative', zIndex: 2 }}
+            >
+              <AutoRow justify="center" style={{ padding: '0 1rem' }}>
+                <ArrowWrapper
+                  onClick={() => {
+                    setApprovalSubmitted(false) // reset 2 step UI for approvals
+                    onSwitchTokens()
+                  }}
+                  clickable
+                  style={{
+                    borderRadius: '50%',
+                    border: '1px solid white',
+                    padding: 5,
+                    marginTop: 0,
+                    marginBottom: 0,
+                    width: 35,
+                    height: 35,
+                    lineHeight: '25px',
+                    paddingTop: 10,
+                    display: 'inline-flex'
+                  }}
+                >
+                  <ChevronDown style={{ marginRight: '-5px' }} size="14" color={theme.text2} />
+                  <ChevronUp size="14" color={theme.text2} />
                 </ArrowWrapper>
-                
               </AutoRow>
             </AutoColumn>
             <CurrencyInputPanel
               value={formattedAmounts[Field.OUTPUT]}
               onUserInput={handleTypeOutput}
-              label={independentField === Field.INPUT && !showWrap && !showConvert && trade ? t('toEstimated') : t('to')}
+              label={
+                independentField === Field.INPUT && !showWrap && !showConvert && trade ? t('toEstimated') : t('to')
+              }
               showMaxButton={false}
               currency={currencies[Field.OUTPUT]}
               onCurrencySelect={handleOutputSelect}
@@ -346,17 +368,25 @@ export default function Swap() {
               id="swap-currency-output-2"
             />
             {recipient === null && !showWrap && !showConvert && isExpertMode ? (
-                  <LinkStyledButton  style={{color:'#C3C5CB'}} id="add-recipient-button" onClick={() => onChangeRecipient('')}>
-                    {t('addRecipient')}
-                  </LinkStyledButton>
-                ) : null}
+              <LinkStyledButton
+                style={{ color: '#C3C5CB' }}
+                id="add-recipient-button"
+                onClick={() => onChangeRecipient('')}
+              >
+                {t('addRecipient')}
+              </LinkStyledButton>
+            ) : null}
             {recipient !== null && !showWrap && !showConvert ? (
               <>
                 <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>
                   <ArrowWrapper clickable={false}>
                     <ArrowDown size="16" color="#FFF" />
                   </ArrowWrapper>
-                  <LinkStyledButton style={{color:'#C3C5CB',justifyContent:'space-between'}}  id="remove-recipient-button" onClick={() => onChangeRecipient(null)}>
+                  <LinkStyledButton
+                    style={{ color: '#C3C5CB', justifyContent: 'space-between' }}
+                    id="remove-recipient-button"
+                    onClick={() => onChangeRecipient(null)}
+                  >
                     {t('removeRecipent')}
                   </LinkStyledButton>
                 </AutoRow>
@@ -364,7 +394,7 @@ export default function Swap() {
               </>
             ) : null}
 
-            {showWrap||showConvert ? null : (
+            {showWrap || showConvert ? null : (
               <Card padding={'.25rem .75rem 0 .75rem'} borderRadius={'10px'}>
                 <AutoColumn gap="4px">
                   {Boolean(trade) && (
@@ -395,7 +425,9 @@ export default function Swap() {
           </AutoColumn>
           <BottomGrouping>
             {!account ? (
-              <ButtonLight onClick={toggleWalletModal}><LogIn style={{marginRight:5}} size="18" color="#313131"/> {t('connectWallet')}</ButtonLight>
+              <ButtonLight onClick={toggleWalletModal}>
+                <LogIn style={{ marginRight: 5 }} size="18" color="#313131" /> {t('connectWallet')}
+              </ButtonLight>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??
@@ -420,16 +452,19 @@ export default function Swap() {
                     t('approve') + ' ' + currencies[Field.INPUT]?.symbol
                   )}
                 </ButtonConfirmed>
-                <ButtonError 
-                  disabled={
-                    approvalConvert !== ApprovalState.APPROVED || Boolean(wrapInputError)
-                  }
-                  onClick={onConvert} width="48%" >
+                <ButtonError
+                  disabled={approvalConvert !== ApprovalState.APPROVED || Boolean(wrapInputError)}
+                  onClick={onConvert}
+                  width="48%"
+                >
                   {convertInputError ??
-                    (convertType === ConvertType.CONVERT ? t('convert') : convertType === ConvertType.REVERT ? t('revert') : null)}
+                    (convertType === ConvertType.CONVERT
+                      ? t('convert')
+                      : convertType === ConvertType.REVERT
+                      ? t('revert')
+                      : null)}
                 </ButtonError>
               </RowBetween>
-              
             ) : noRoute && userHasSpecifiedInputOutput ? (
               <GreyCard style={{ textAlign: 'center' }}>
                 <TYPE.main mb="4px">{t('insufficientLiquidity')}</TYPE.main>

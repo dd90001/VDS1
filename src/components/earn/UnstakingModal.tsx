@@ -74,7 +74,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
       {!attempting && !hash && (
         <ContentWrapper gap="lg">
           <RowBetween>
-            <TYPE.mediumHeader>{t("Withdraw")}</TYPE.mediumHeader>
+            <TYPE.mediumHeader>{t('Withdraw')}</TYPE.mediumHeader>
             <CloseIcon onClick={wrappedOndismiss} />
           </RowBetween>
           {stakingInfo?.stakedAmount && (
@@ -82,7 +82,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo.stakedAmount} />}
               </TYPE.body>
-              <TYPE.body>{t("Deposited liquidity:")}</TYPE.body>
+              <TYPE.body>{t('Deposited liquidity:')}</TYPE.body>
             </AutoColumn>
           )}
           {stakingInfo?.earnedAmount && (
@@ -90,11 +90,11 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
               </TYPE.body>
-              <TYPE.body>{t("Unclaimed")} WASP</TYPE.body>
+              <TYPE.body>{t('Unclaimed')} WASP</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
-            {t("When you withdraw, your WASP is claimed and your liquidity is removed from the mining pool.")}
+            {t('When you withdraw, your WASP is claimed and your liquidity is removed from the mining pool.')}
           </TYPE.subHeader>
           <ButtonError disabled={!!error} error={!!error && !!stakingInfo?.stakedAmount} onClick={onWithdraw}>
             {error ?? t('Withdraw & Claim')}
@@ -104,17 +104,21 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.body fontSize={20}>{t("Withdrawing")} {stakingInfo?.stakedAmount?.toSignificant(4)} WSLP</TYPE.body>
-            <TYPE.body fontSize={20}>{t("Claiming")} {stakingInfo?.earnedAmount?.toSignificant(4)} WASP</TYPE.body>
+            <TYPE.body fontSize={20}>
+              {t('Withdrawing')} {stakingInfo?.stakedAmount?.toSignificant(4)} WSLP
+            </TYPE.body>
+            <TYPE.body fontSize={20}>
+              {t('Claiming')} {stakingInfo?.earnedAmount?.toSignificant(4)} WASP
+            </TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
       {hash && (
         <SubmittedView onDismiss={wrappedOndismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>{t("Transaction Submitted")}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{t("Withdrew")} WSLP!</TYPE.body>
-            <TYPE.body fontSize={20}>{t("Claimed")} WASP!</TYPE.body>
+            <TYPE.largeHeader>{t('Transaction Submitted')}</TYPE.largeHeader>
+            <TYPE.body fontSize={20}>{t('Withdrew')} WSLP!</TYPE.body>
+            <TYPE.body fontSize={20}>{t('Claimed')} WASP!</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

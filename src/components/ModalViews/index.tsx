@@ -1,8 +1,8 @@
-import React, {  } from 'react'
+import React from 'react'
 import { useActiveWeb3React } from '../../hooks'
 
 import { AutoColumn, ColumnCenter } from '../Column'
-import styled, {  } from 'styled-components'
+import styled from 'styled-components'
 import { RowBetween } from '../Row'
 import { TYPE, CloseIcon, CustomLightSpinner } from '../../theme'
 import { ArrowUpCircle } from 'react-feather'
@@ -34,7 +34,7 @@ export function LoadingView({ children, onDismiss }: { children: any; onDismiss:
       </ConfirmedIcon>
       <AutoColumn gap="100px" justify={'center'}>
         {children}
-        <TYPE.subHeader>{t("Confirm this transaction in your wallet")}</TYPE.subHeader>
+        <TYPE.subHeader>{t('Confirm this transaction in your wallet')}</TYPE.subHeader>
       </AutoColumn>
     </ConfirmOrLoadingWrapper>
   )
@@ -49,7 +49,6 @@ export function SubmittedView({
   onDismiss: () => void
   hash: string | undefined
 }) {
-
   const { chainId } = useActiveWeb3React()
 
   const { t } = useTranslation()
@@ -67,7 +66,7 @@ export function SubmittedView({
         {children}
         {chainId && hash && (
           <ExternalLink href={getEtherscanLink(chainId, hash, 'transaction')} style={{ marginLeft: '4px' }}>
-            <TYPE.subHeader>{t("View transaction on wanscan.org")}</TYPE.subHeader>
+            <TYPE.subHeader>{t('View transaction on wanscan.org')}</TYPE.subHeader>
           </ExternalLink>
         )}
       </AutoColumn>

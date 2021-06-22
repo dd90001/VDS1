@@ -81,7 +81,12 @@ export function useHasPendingApproval(tokenAddress: string | undefined, spender:
         if (tx.receipt && !waitingApproveStable(tx)) {
           return false
         } else {
-          return approval.spender === spender && approval.tokenAddress === tokenAddress && isTransactionRecent(tx) && waitingApproveStable(tx)
+          return (
+            approval.spender === spender &&
+            approval.tokenAddress === tokenAddress &&
+            isTransactionRecent(tx) &&
+            waitingApproveStable(tx)
+          )
         }
       }),
     [allTransactions, spender, tokenAddress]

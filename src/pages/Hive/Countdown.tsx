@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { STAKING_GENESIS, REWARDS_DURATION_DAYS } from '../../state/stake/hooks'
 import { TYPE } from '../../theme'
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 const MINUTE = 60
 const HOUR = MINUTE * 60
@@ -15,10 +15,7 @@ export function Countdown({ exactEnd, exactStart }: { exactEnd?: Date; exactStar
     exactEnd
   ])
   // const begin = useMemo(() => end - REWARDS_DURATION, [end])
-  const begin = useMemo(
-    () => (exactStart ? Math.floor(exactStart.getTime() / 1000) : STAKING_GENESIS),
-    [exactStart]
-  )
+  const begin = useMemo(() => (exactStart ? Math.floor(exactStart.getTime() / 1000) : STAKING_GENESIS), [exactStart])
   // get current time
   const [time, setTime] = useState(() => Math.floor(Date.now() / 1000))
   useEffect((): (() => void) | void => {
@@ -62,47 +59,45 @@ export function Countdown({ exactEnd, exactStart }: { exactEnd?: Date; exactStar
 
   return (
     <TYPE.black fontWeight={400} fontSize={'17px'}>
-      
-      {
-        message.includes('ended') && <SpanFinished>{t("Inactive")}</SpanFinished>
-      }
-      {Number.isFinite(timeRemaining) && (
-        <code>
-          
-        </code>
+      {message.includes('ended') && <SpanFinished>{t('Inactive')}</SpanFinished>}
+      {Number.isFinite(timeRemaining) && <code></code>}
+      {message.includes('End in') && (
+        <SpanActive>
+          {t('Active: ') + t(message)}{' '}
+          {`${days}:${hours.toString().padStart(2, '0')}:${minutes
+            .toString()
+            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
+        </SpanActive>
       )}
-      {
-        message.includes('End in') && <SpanActive>{t('Active: ') + t(message)}{' '} {`${days}:${hours.toString().padStart(2, '0')}:${minutes
-          .toString()
-          .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</SpanActive>
-      }
-      {
-        message.includes('Start in') && <SpanPending>Pending: Start in {`${days}:${hours.toString().padStart(2, '0')}:${minutes
-          .toString()
-          .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}</SpanPending>
-      }
+      {message.includes('Start in') && (
+        <SpanPending>
+          Pending: Start in{' '}
+          {`${days}:${hours.toString().padStart(2, '0')}:${minutes
+            .toString()
+            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
+        </SpanPending>
+      )}
     </TYPE.black>
   )
 }
-
 
 const SpanFinished = styled.span`
   background: #d15458;
   padding: 5px 10px;
   border-radius: 15px;
   font-size: 10px;
-`;
+`
 
 const SpanActive = styled.span`
-background: #54d186;
-padding: 5px 10px;
-border-radius: 15px;
-font-size: 10px;
-`;
+  background: #54d186;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 10px;
+`
 
 const SpanPending = styled.span`
-background: #1a4b80;
-padding: 5px 10px;
-border-radius: 15px;
-font-size: 10px;
-`;
+  background: #1a4b80;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 10px;
+`

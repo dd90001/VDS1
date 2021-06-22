@@ -26,7 +26,7 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(100% 90% at 20% 0%,#41beec 0%,#123471 100%)
+  background: radial-gradient(100% 90% at 20% 0%, #41beec 0%, #123471 100%);
 `
 
 const ConfirmOrLoadingWrapper = styled.div<{ activeBG: boolean }>`
@@ -136,7 +136,8 @@ export default function ClaimModal() {
           </ModalUpper>
           <AutoColumn gap="md" style={{ padding: '1rem', paddingTop: '0' }} justify="center">
             <TYPE.subHeader fontWeight={500}>
-              As a member of the Wanswap community you may claim WASP to be used for voting and governance. <br /> <br />
+              As a member of the Wanswap community you may claim WASP to be used for voting and governance. <br />{' '}
+              <br />
               <ExternalLink href="https://uniswap.org/blog/uni">Read more about WASP</ExternalLink>
             </TYPE.subHeader>
             <ButtonPrimary

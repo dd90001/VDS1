@@ -8,7 +8,7 @@ import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.
 const WANV2_PAIR_INTERFACE = new Interface(IUniswapV2PairABI)
 const BRIDGE_MINER_INTERFACE = new Interface(BRIDGE_MINER_ABI)
 const WANV2BRIDGE_TOKEN_INTERFACE = new Interface(BRIDGE_TOKEN_ABI)
-const HIVE_INTERFACE = new Interface(HIVE_ABI);
+const HIVE_INTERFACE = new Interface(HIVE_ABI)
 
 const BRIDGE_MINER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MAINNET]: '0x7E5fE1e587A5c38B4A4A9ba38a35096F8EA35aaC',
@@ -42,5 +42,5 @@ export {
   HIVE_INTERFACE,
   WANV2_PAIR_INTERFACE,
   BRIDGE_MINER_INTERFACE,
-  WANV2BRIDGE_TOKEN_INTERFACE,
+  WANV2BRIDGE_TOKEN_INTERFACE
 }

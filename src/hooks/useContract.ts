@@ -24,7 +24,7 @@ import {
   BRIDGE_TOKEN_ABI,
   BRIDGE_TOKEN_ADDRESS,
   HIVE_ADDRESS,
-  HIVE_ABI,
+  HIVE_ABI
 } from '../constants/abis/bridge'
 import UNISOCKS_ABI from '../constants/abis/unisocks.json'
 import WETH_ABI from '../constants/abis/weth.json'

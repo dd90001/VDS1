@@ -1,13 +1,15 @@
 import { Trade, TradeType } from '@wanswap/sdk'
 import React, { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
-import 
-//  styled, 
- { ThemeContext } from 'styled-components'
+import {
+  //  styled,
+  ThemeContext
+} from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
-import { TYPE, 
-  // ExternalLink 
+import {
+  TYPE
+  // ExternalLink
 } from '../../theme'
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown } from '../../utils/prices'
 import { AutoColumn } from '../Column'

@@ -38,13 +38,12 @@ const Base = styled(RebassButton)<{
 `
 
 export const ButtonPrimary = styled(Base)`
-  background-color: #FFE600;
+  background-color: #ffe600;
   color: #313131;
   text-decoration: none;
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme }) => lighten(0.1, '#FFE600')};
     background-color: ${({ theme }) => lighten(0.1, '#FFE600')};
-    
   }
   &:hover {
     background-color: ${({ theme }) => lighten(0.2, '#FFE600')};
@@ -54,9 +53,8 @@ export const ButtonPrimary = styled(Base)`
     background-color: ${({ theme }) => lighten(0.2, '#FFE600')};
   }
   &:disabled {
-   
     background-color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? '#002868' : '#002868')};
-    color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? '#3c9fd6' :  '#3c9fd6')};
+    color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? '#3c9fd6' : '#3c9fd6')};
     cursor: auto;
     box-shadow: none;
     border: 1px solid transparent;
@@ -66,7 +64,7 @@ export const ButtonPrimary = styled(Base)`
 `
 
 export const ButtonLight = styled(Base)`
-  background-color: #FFE600;
+  background-color: #ffe600;
   text-decoration: none;
   color: #313131;
   font-size: 20px;
@@ -99,7 +97,7 @@ export const ButtonGray = styled(Base)`
   color: ${({ theme }) => theme.text2};
   font-size: 16px;
   font-weight: 500;
-  
+
   &:focus {
     box-shadow: 0 0 0 1pt ${({ theme, disabled }) => !disabled && darken(0.05, theme.bg2)};
     background-color: ${({ theme, disabled }) => !disabled && darken(0.05, theme.bg2)};
@@ -118,7 +116,7 @@ export const ButtonSecondary = styled(Base)`
   color: ${({ theme }) => theme.primary1};
   background-color: transparent;
   font-size: 16px;
-  border-radius:10px;
+  border-radius: 10px;
   padding: ${({ padding }) => (padding ? padding : '10px')};
 
   &:focus {
@@ -273,11 +271,15 @@ export function ButtonConfirmed({
   }
 }
 
-export function ButtonError({ error, altDisabledStyle, ...rest }: { error?: boolean; altDisabledStyle?: boolean } & ButtonProps) {
+export function ButtonError({
+  error,
+  altDisabledStyle,
+  ...rest
+}: { error?: boolean; altDisabledStyle?: boolean } & ButtonProps) {
   if (error) {
     return <ButtonErrorStyle {...rest} />
   } else {
-    return <ButtonPrimary {...rest} altDisabledStyle={altDisabledStyle}/>
+    return <ButtonPrimary {...rest} altDisabledStyle={altDisabledStyle} />
   }
 }
 
@@ -294,7 +296,7 @@ export function ButtonDropdown({ disabled = false, children, ...rest }: { disabl
 
 export function ButtonDropdownLight({ disabled = false, children, ...rest }: { disabled?: boolean } & ButtonProps) {
   return (
-    <ButtonOutlined style={{background:'rgb(26,61,119)'}} {...rest} disabled={disabled}>
+    <ButtonOutlined style={{ background: 'rgb(26,61,119)' }} {...rest} disabled={disabled}>
       <RowBetween>
         <div style={{ display: 'flex', alignItems: 'center' }}>{children}</div>
         <ChevronDown size={24} />

@@ -24,7 +24,7 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(90% 90% at 0% 0%,#41beec 0%,#123471 100%);
+  background: radial-gradient(90% 90% at 0% 0%, #41beec 0%, #123471 100%);
   padding: 0.5rem;
 `
 
@@ -65,10 +65,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
   )
 
   const burned: TokenAmount | undefined = useMemo(
-    () =>
-      blockTimestamp && uni && chainId === ChainId.MAINNET
-        ? totalBurned
-        : totalBurned,
+    () => (blockTimestamp && uni && chainId === ChainId.MAINNET ? totalBurned : totalBurned),
     [blockTimestamp, chainId, totalBurned, uni]
   )
 
@@ -100,9 +97,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
                 </RowBetween>
                 <RowBetween>
                   <TYPE.white color="white">{t('unclaimed')}:</TYPE.white>
-                  <TYPE.white color="white">
-                    {uniToClaim?.toFixed(2, { groupSeparator: ',' })}{' '}
-                  </TYPE.white>
+                  <TYPE.white color="white">{uniToClaim?.toFixed(2, { groupSeparator: ',' })} </TYPE.white>
                 </RowBetween>
               </AutoColumn>
             </CardSection>
@@ -129,14 +124,20 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
             </RowBetween> */}
             <RowBetween>
               <TYPE.white color="white">WASP Token Address(WRC20):</TYPE.white>
-              <TYPE.white color="white"><a href="https://www.wanscan.org/token/0x8b9f9f4aa70b1b0d586be8adfb19c1ac38e05e9a">0x8b9f...5e9a</a></TYPE.white>
+              <TYPE.white color="white">
+                <a href="https://www.wanscan.org/token/0x8b9f9f4aa70b1b0d586be8adfb19c1ac38e05e9a">0x8b9f...5e9a</a>
+              </TYPE.white>
             </RowBetween>
             <RowBetween>
               <TYPE.white color="white">WASP Token Address(ERC20):</TYPE.white>
-              <TYPE.white color="white"><a href="https://etherscan.io/token/0xef5c6a88710a3c857105058f947d249bc490909d">0xef5c...909d</a></TYPE.white>
+              <TYPE.white color="white">
+                <a href="https://etherscan.io/token/0xef5c6a88710a3c857105058f947d249bc490909d">0xef5c...909d</a>
+              </TYPE.white>
             </RowBetween>
             {uni && uni.chainId === ChainId.MAINNET ? (
-              <ExternalLink href={`https://info.wanswap.finance/token/0x8b9f9f4aa70b1b0d586be8adfb19c1ac38e05e9a`}>View WASP Statistics</ExternalLink>
+              <ExternalLink href={`https://info.wanswap.finance/token/0x8b9f9f4aa70b1b0d586be8adfb19c1ac38e05e9a`}>
+                View WASP Statistics
+              </ExternalLink>
             ) : null}
           </AutoColumn>
         </CardSection>

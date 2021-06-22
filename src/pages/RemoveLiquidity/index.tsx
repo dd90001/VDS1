@@ -59,7 +59,7 @@ export default function RemoveLiquidity({
     chainId
   ])
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const theme = useContext(ThemeContext)
 
@@ -104,7 +104,7 @@ export default function RemoveLiquidity({
   const [signatureData, setSignatureData] = useState<{ v: number; r: string; s: string; deadline: number } | null>(null)
   const [approval, approveCallback] = useApproveCallback(parsedAmounts[Field.LIQUIDITY], ROUTER_ADDRESS)
 
-  const isArgentWallet = true; //useIsArgentWallet()
+  const isArgentWallet = true //useIsArgentWallet()
 
   async function onAttemptToApprove() {
     if (!pairContract || !pair || !library || !deadline) throw new Error('missing dependencies')
@@ -282,7 +282,7 @@ export default function RemoveLiquidity({
     } else {
       throw new Error('Attempting to confirm without approval or a signature. Please contact support.')
     }
-    
+
     const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
       methodNames.map(methodName =>
         router.estimateGas[methodName](...args)

@@ -21,13 +21,12 @@ import Loader from '../Loader'
 import { RowBetween } from '../Row'
 import WalletModal from '../WalletModal'
 
-
 const Web3StatusGeneric = styled(ButtonSecondary)`
   ${({ theme }) => theme.flexRowNoWrap}
   width: 100%;
   align-items: center;
   padding: 0.5rem;
-  border-radius:10px;
+  border-radius: 10px;
   cursor: pointer;
   user-select: none;
   :focus {
@@ -96,7 +95,7 @@ const Text = styled.p`
   font-size: 1rem;
   width: fit-content;
   font-weight: 500;
-  max-width:80px;
+  max-width: 80px;
 `
 
 const NetworkIcon = styled(Activity)`
@@ -121,7 +120,7 @@ const SOCK = (
 function StatusIcon({ connector }: { connector: AbstractConnector }) {
   if (connector === injected) {
     return <Identicon />
-  } 
+  }
   return null
 }
 
@@ -198,7 +197,7 @@ export default function Web3Status() {
 
   return (
     <>
-      <Web3StatusInner  />
+      <Web3StatusInner />
       <WalletModal ENSName={ENSName ?? undefined} pendingTransactions={pending} confirmedTransactions={confirmed} />
     </>
   )

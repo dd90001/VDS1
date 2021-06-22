@@ -9,14 +9,17 @@ import { useTotalSupply } from '../../data/TotalSupply'
 
 import { useActiveWeb3React } from '../../hooks'
 import { useTokenBalance } from '../../state/wallet/hooks'
-import { 
-  // ExternalLink, 
-  TYPE } from '../../theme'
+import {
+  // ExternalLink,
+  TYPE
+} from '../../theme'
 import { currencyId } from '../../utils/currencyId'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
-import { ButtonPrimary, 
-  // ButtonSecondary, 
-  ButtonEmpty } from '../Button'
+import {
+  ButtonPrimary,
+  // ButtonSecondary,
+  ButtonEmpty
+} from '../Button'
 import { transparentize } from 'polished'
 import { CardNoise } from '../earn/styled'
 
@@ -87,7 +90,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   return (
     <>
       {userPoolBalance && JSBI.greaterThan(userPoolBalance.raw, JSBI.BigInt(0)) ? (
-        <GreyCard style={{background:'rgb(26,61,119)'}} border={border}>
+        <GreyCard style={{ background: 'rgb(26,61,119)' }} border={border}>
           <AutoColumn gap="12px">
             <FixedHeightRow>
               <RowFixed>
@@ -196,7 +199,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
   const backgroundColor = useColor(pair?.token0)
 
   return (
-    <StyledPositionCard border={border} bgColor={backgroundColor} style={{background:'#123471'}}>
+    <StyledPositionCard border={border} bgColor={backgroundColor} style={{ background: '#123471' }}>
       <CardNoise />
       <AutoColumn gap="12px">
         <FixedHeightRow>
@@ -261,7 +264,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
             <FixedHeightRow>
               <RowFixed>
                 <Text fontSize={16} fontWeight={500}>
-                {t('pooled')} {currency1.symbol}:
+                  {t('pooled')} {currency1.symbol}:
                 </Text>
               </RowFixed>
               {token1Deposited ? (

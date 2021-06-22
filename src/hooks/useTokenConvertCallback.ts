@@ -32,7 +32,6 @@ export default function useTokenConvertCallback(
   // we can always parse the amount typed as the input currency, since wrapping is 1:1
   const inputAmount = useMemo(() => tryParseAmount(typedValue, inputCurrency), [inputCurrency, typedValue])
   const addTransaction = useTransactionAdder()
-  
 
   return useMemo(() => {
     if (!convertContract || !chainId || !inputCurrency || !outputCurrency) return NOT_CONVERTABLE
@@ -40,7 +39,10 @@ export default function useTokenConvertCallback(
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
     const liquidityEnough = inputAmount && quota && !quota.lessThan(inputAmount)
 
-    if (currencyEquals(CONVERT_TOKEN0[chainId], inputCurrency) && currencyEquals(CONVERT_TOKEN1[chainId], outputCurrency)) {
+    if (
+      currencyEquals(CONVERT_TOKEN0[chainId], inputCurrency) &&
+      currencyEquals(CONVERT_TOKEN1[chainId], outputCurrency)
+    ) {
       return {
         convertType: ConvertType.CONVERT,
         execute:
@@ -54,9 +56,16 @@ export default function useTokenConvertCallback(
                 }
               }
             : undefined,
-        inputError: liquidityEnough? (sufficientBalance ? undefined : 'Insufficient wanOBTC balance'): 'Insufficient liquidity'
+        inputError: liquidityEnough
+          ? sufficientBalance
+            ? undefined
+            : 'Insufficient wanOBTC balance'
+          : 'Insufficient liquidity'
       }
-    } else if (currencyEquals(CONVERT_TOKEN1[chainId], inputCurrency) && currencyEquals(CONVERT_TOKEN0[chainId], outputCurrency)) {
+    } else if (
+      currencyEquals(CONVERT_TOKEN1[chainId], inputCurrency) &&
+      currencyEquals(CONVERT_TOKEN0[chainId], outputCurrency)
+    ) {
       return {
         convertType: ConvertType.REVERT,
         execute:
@@ -70,7 +79,11 @@ export default function useTokenConvertCallback(
                 }
               }
             : undefined,
-        inputError:  liquidityEnough? (sufficientBalance ? undefined : 'Insufficient wanBTC balance'): 'Insufficient liquidity'
+        inputError: liquidityEnough
+          ? sufficientBalance
+            ? undefined
+            : 'Insufficient wanBTC balance'
+          : 'Insufficient liquidity'
       }
     } else {
       return NOT_CONVERTABLE

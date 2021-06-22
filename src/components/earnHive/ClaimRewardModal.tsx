@@ -14,7 +14,6 @@ import { useActiveWeb3React } from '../../hooks'
 import { useTranslation } from 'react-i18next'
 import { calculateGasMargin } from '../../utils'
 
-
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
   padding: 1rem;
@@ -45,8 +44,9 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
   async function onClaimReward() {
     if (bridgeMinerContract && stakingInfo?.earnedAmount) {
       setAttempting(true)
-      let gas = await bridgeMinerContract.estimateGas['withdraw'](stakingInfo.pid, '0x0');
-      await bridgeMinerContract.withdraw(stakingInfo.pid, '0x0', {gasLimit: calculateGasMargin(gas)})
+      const gas = await bridgeMinerContract.estimateGas['withdraw'](stakingInfo.pid, '0x0')
+      await bridgeMinerContract
+        .withdraw(stakingInfo.pid, '0x0', { gasLimit: calculateGasMargin(gas) })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
             summary: `Claim accumulated WAN rewards`

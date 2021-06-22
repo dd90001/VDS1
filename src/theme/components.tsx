@@ -9,7 +9,7 @@ export const Button = styled.button.attrs<{ warning: boolean }, { backgroundColo
   backgroundColor: warning ? theme.red1 : theme.primary1
 }))`
   padding: 1rem 2rem 1rem 2rem;
-  border-radius:10px;
+  border-radius: 10px;
   cursor: pointer;
   user-select: none;
   font-size: 1rem;
@@ -121,7 +121,7 @@ export const UniTokenAnimated = styled.img`
 `
 declare global {
   interface Window {
-    injectWeb3: any;
+    injectWeb3: any
   }
 }
 

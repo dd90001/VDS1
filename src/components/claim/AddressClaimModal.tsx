@@ -22,14 +22,14 @@ import { getEtherscanLink, shortenAddress } from '../../utils'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
-  background:#123471;
+  background: #123471;
 `
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(100% 90% at 20% 0%,#41beec 0%,#123471 100%);
-  border-radius:0;
-  border-bottom:0;
+  background: radial-gradient(100% 90% at 20% 0%, #41beec 0%, #123471 100%);
+  border-radius: 0;
+  border-bottom: 0;
 `
 
 const ConfirmOrLoadingWrapper = styled.div<{ activeBG: boolean }>`
@@ -125,7 +125,6 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
             )}
             <ButtonPrimary
               disabled={!isAddress(parsedAddress ?? '') || !hasAvailableClaim}
-              
               padding="16px 16px"
               width="100%"
               borderRadius="12px"

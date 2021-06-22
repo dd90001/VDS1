@@ -8,7 +8,7 @@ import { ALLOWED_PRICE_IMPACT_HIGH, PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN } from 
  */
 export default function confirmPriceImpactWithoutFee(priceImpactWithoutFee: Percent): boolean {
   if (window.injectWeb3) {
-    return true;
+    return true
   }
   if (!priceImpactWithoutFee.lessThan(PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN)) {
     return (

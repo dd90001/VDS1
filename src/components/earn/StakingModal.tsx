@@ -214,11 +214,10 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       {!attempting && !hash && (
         <ContentWrapper gap="md">
           <RowBetween>
-            <TYPE.mediumHeader>{t("Deposit")}</TYPE.mediumHeader>
+            <TYPE.mediumHeader>{t('Deposit')}</TYPE.mediumHeader>
             <CloseIcon onClick={wrappedOnDismiss} />
           </RowBetween>
           <CurrencyInputPanel
-            
             value={typedValue}
             onUserInput={onUserInput}
             onMax={handleMax}
@@ -233,12 +232,12 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
           <HypotheticalRewardRate dim={!hypotheticalRewardRate.greaterThan('0')}>
             <div>
-              <TYPE.black fontWeight={600}>{t("Weekly Rewards")}</TYPE.black>
+              <TYPE.black fontWeight={600}>{t('Weekly Rewards')}</TYPE.black>
             </div>
 
             <TYPE.black>
               {hypotheticalRewardRate.multiply((60 * 60 * 24 * 7).toString()).toSignificant(4, { groupSeparator: ',' })}{' '}
-              {t("WASP / week")}
+              {t('WASP / week')}
             </TYPE.black>
           </HypotheticalRewardRate>
 
@@ -250,7 +249,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
               confirmed={approval === ApprovalState.APPROVED || signatureData !== null}
               disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
             >
-              {t("Approve")}
+              {t('Approve')}
             </ButtonConfirmed>
             <ButtonError
               altDisabledStyle={true}
@@ -267,7 +266,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>{t("Depositing Liquidity")}</TYPE.largeHeader>
+            <TYPE.largeHeader>{t('Depositing Liquidity')}</TYPE.largeHeader>
             <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} WSLP</TYPE.body>
           </AutoColumn>
         </LoadingView>
@@ -275,8 +274,10 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       {attempting && hash && (
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>{t("Transaction Submitted")}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{t("Deposited")} {parsedAmount?.toSignificant(4)} WSLP</TYPE.body>
+            <TYPE.largeHeader>{t('Transaction Submitted')}</TYPE.largeHeader>
+            <TYPE.body fontSize={20}>
+              {t('Deposited')} {parsedAmount?.toSignificant(4)} WSLP
+            </TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

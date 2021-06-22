@@ -67,9 +67,9 @@ const BodyWrapper = styled.div`
 `
 
 const HaechiAudit = styled.div`
-  position:fixed;
-  bottom:-5px;
-  right:100px;
+  position: fixed;
+  bottom: -5px;
+  right: 100px;
 
   ${({ theme }) => theme.mediaWidth.upToLarge`
   z-index:99;
@@ -84,8 +84,6 @@ const HaechiAudit = styled.div`
   ${({ theme }) => theme.mediaWidth.upToSmall`
   display:none;
   `};
-
-  
 `
 
 const Marginer = styled.div`
@@ -103,10 +101,16 @@ export default function App() {
     <Suspense fallback={null}>
       <Route component={GoogleAnalyticsReporter} />
       <Route component={DarkModeQueryParamReader} />
-      
-	    <div id="shadow_bottom"></div>
+
+      <div id="shadow_bottom"></div>
       <HaechiAudit>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/wanswap/wanswap-contracts/blob/master/[HAECHI%20AUDIT]%20WanSwap%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf"><img alt="audit" src="haechiaudit.png"/></a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/wanswap/wanswap-contracts/blob/master/[HAECHI%20AUDIT]%20WanSwap%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf"
+        >
+          <img alt="audit" src="haechiaudit.png" />
+        </a>
       </HaechiAudit>
       <AppWrapper>
         <URLWarning />

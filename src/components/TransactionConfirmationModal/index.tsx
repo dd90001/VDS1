@@ -33,7 +33,7 @@ const ConfirmedIcon = styled(ColumnCenter)`
 `
 
 function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismiss: () => void; pendingText: string }) {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   return (
     <Wrapper>
       <Section>
@@ -71,7 +71,6 @@ function TransactionSubmittedContent({
   hash: string | undefined
   chainId: ChainId
 }) {
-  
   const { t } = useTranslation()
   return (
     <Wrapper>

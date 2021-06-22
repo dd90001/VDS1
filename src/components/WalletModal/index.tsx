@@ -211,7 +211,7 @@ export default function WalletModal({
       // check for mobile options
       if (isMobile) {
         //disable portis on mobile for now
- 
+
         if (!window.wanWeb3 && !window.wanchain && option.mobile) {
           return (
             <Option
@@ -264,7 +264,7 @@ export default function WalletModal({
 
       if (option.connector === metamask) {
         // don't show injected if there's no injected provider
-        if (!(window.ethereum)) {
+        if (!window.ethereum) {
           if (option.name === 'MetaMask') {
             return (
               <Option
@@ -371,7 +371,9 @@ export default function WalletModal({
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
               <span>New to Wanchain? &nbsp;</span>{' '}
-              <ExternalLink href="https://www.explorewanchain.org/#/wallet_and_tools/tools">Learn more about wallets</ExternalLink>
+              <ExternalLink href="https://www.explorewanchain.org/#/wallet_and_tools/tools">
+                Learn more about wallets
+              </ExternalLink>
             </Blurb>
           )}
         </ContentWrapper>

@@ -188,7 +188,7 @@ export default function Updater(): null {
               return
             }
             console.error('Failed to fetch multicall chunk', chunk, chainId, error)
-            console.log('chunk', JSON.stringify(chunk));
+            console.log('chunk', JSON.stringify(chunk))
             dispatch(
               errorFetchingMulticallResults({
                 calls: chunk,

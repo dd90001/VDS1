@@ -7,20 +7,16 @@ import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
 
-const getTokenLogoURL = (address: string) =>
-  (`https://token-icons.vercel.app/tokens/${address}.png`).toLowerCase()
+const getTokenLogoURL = (address: string) => `https://token-icons.vercel.app/tokens/${address}.png`.toLowerCase()
 
 const StyledEthereumLogo = styled.img<{ size: string }>`
- 
   height: ${({ size }) => size};
-  margin-right:-3px;
+  margin-right: -3px;
 `
 
 const StyledLogo = styled(Logo)<{ size: string }>`
- 
   height: ${({ size }) => size};
-  margin-right:-3px;
-  
+  margin-right: -3px;
 `
 
 export default function CurrencyLogo({
