@@ -40,7 +40,7 @@ export const metamask = new MetaMaskConnector({
 // mainnet only
 export const walletconnect = new WalletConnectConnector({
   rpc: { 
-    888: NETWORK_URL,
+    1: NETWORK_URL,
   },
    bridge: 'https://bridge.walletconnect.org',
    qrcode: true,
