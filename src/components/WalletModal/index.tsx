@@ -166,6 +166,7 @@ export default function WalletModal({
 
   const tryActivation = async (connector: AbstractConnector | undefined) => {
     let name = ''
+      console.log(SUPPORTED_WALLETS,connector)
     Object.keys(SUPPORTED_WALLETS).map(key => {
       if (connector === SUPPORTED_WALLETS[key].connector) {
         return (name = SUPPORTED_WALLETS[key].name)
@@ -206,6 +207,7 @@ export default function WalletModal({
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
    const isMetamask = window.ethereum && window.ethereum.isMetaMask
+   console.log(SUPPORTED_WALLETS)
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
