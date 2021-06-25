@@ -8,13 +8,13 @@
     "static/js/2.283de8c0.chunk.js.map": "/VDS1/static/js/2.283de8c0.chunk.js.map",
     "static/js/3.121a36e9.chunk.js": "/VDS1/static/js/3.121a36e9.chunk.js",
     "static/js/3.121a36e9.chunk.js.map": "/VDS1/static/js/3.121a36e9.chunk.js.map",
-    "main.js": "/VDS1/static/js/main.de4f989e.chunk.js",
-    "main.js.map": "/VDS1/static/js/main.de4f989e.chunk.js.map",
+    "main.js": "/VDS1/static/js/main.b82a6b34.chunk.js",
+    "main.js.map": "/VDS1/static/js/main.b82a6b34.chunk.js.map",
     "runtime-main.js": "/VDS1/static/js/runtime-main.ac4374d0.js",
     "runtime-main.js.map": "/VDS1/static/js/runtime-main.ac4374d0.js.map",
     "static/css/6.60e25754.chunk.css": "/VDS1/static/css/6.60e25754.chunk.css",
-    "static/js/6.8c8f5ac3.chunk.js": "/VDS1/static/js/6.8c8f5ac3.chunk.js",
-    "static/js/6.8c8f5ac3.chunk.js.map": "/VDS1/static/js/6.8c8f5ac3.chunk.js.map",
+    "static/js/6.377b344e.chunk.js": "/VDS1/static/js/6.377b344e.chunk.js",
+    "static/js/6.377b344e.chunk.js.map": "/VDS1/static/js/6.377b344e.chunk.js.map",
     "static/js/7.b9378fc1.chunk.js": "/VDS1/static/js/7.b9378fc1.chunk.js",
     "static/js/7.b9378fc1.chunk.js.map": "/VDS1/static/js/7.b9378fc1.chunk.js.map",
     "static/js/8.92b479d8.chunk.js": "/VDS1/static/js/8.92b479d8.chunk.js",
@@ -22,11 +22,11 @@
     "static/js/9.e529ab92.chunk.js": "/VDS1/static/js/9.e529ab92.chunk.js",
     "static/js/9.e529ab92.chunk.js.map": "/VDS1/static/js/9.e529ab92.chunk.js.map",
     "index.html": "/VDS1/index.html",
-    "precache-manifest.a2608c285ddb93805ce96cfca267634f.js": "/VDS1/precache-manifest.a2608c285ddb93805ce96cfca267634f.js",
+    "precache-manifest.c0116006a0dbdaea96a0b8ea767acc25.js": "/VDS1/precache-manifest.c0116006a0dbdaea96a0b8ea767acc25.js",
     "service-worker.js": "/VDS1/service-worker.js",
     "static/css/6.60e25754.chunk.css.map": "/VDS1/static/css/6.60e25754.chunk.css.map",
     "static/js/1.dae53065.chunk.js.LICENSE.txt": "/VDS1/static/js/1.dae53065.chunk.js.LICENSE.txt",
-    "static/js/6.8c8f5ac3.chunk.js.LICENSE.txt": "/VDS1/static/js/6.8c8f5ac3.chunk.js.LICENSE.txt",
+    "static/js/6.377b344e.chunk.js.LICENSE.txt": "/VDS1/static/js/6.377b344e.chunk.js.LICENSE.txt",
     "static/js/9.e529ab92.chunk.js.LICENSE.txt": "/VDS1/static/js/9.e529ab92.chunk.js.LICENSE.txt",
     "static/media/inter.css": "/VDS1/static/media/Inter.var.4b976905.woff2",
     "static/media/Logomark_WASP_token.svg": "/VDS1/static/media/Logomark_WASP_token.08f4ca9a.svg",
@@ -64,7 +64,7 @@
   "entrypoints": [
     "static/js/runtime-main.ac4374d0.js",
     "static/css/6.60e25754.chunk.css",
-    "static/js/6.8c8f5ac3.chunk.js",
-    "static/js/main.de4f989e.chunk.js"
+    "static/js/6.377b344e.chunk.js",
+    "static/js/main.b82a6b34.chunk.js"
   ]
 }
