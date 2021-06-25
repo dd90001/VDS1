@@ -1,9 +1,9 @@
 import { Web3Provider } from '@ethersproject/providers'
-import { InjectedConnector } from '@web3-react-wan/injected-connector'
+import { InjectedConnector } from '@web3-react/injected-connector'
 import { InjectedConnector as MetaMaskConnector } from '@web3-react/injected-connector'
 
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
-import { WanWalletConnector } from '@web3-react-wan/wanwallet-connector'
+
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
 
@@ -42,18 +42,18 @@ export const walletconnect = new WalletConnectConnector({
   rpc: { 
     1: NETWORK_URL,
   },
-   bridge: 'https://bridge.walletconnect.org',
-   qrcode: true,
-   pollingInterval: 15000
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true,
+  pollingInterval: 15000
 })
 
 // mainnet only
-export const wanwallet = new WanWalletConnector({
-  chainId: 888,
-  url: 'https://gwan-ssl.wandevs.org:56891',
-  pollingInterval: 15000,
-  requestTimeoutMs: 300000
-})
+// export const wanwallet = new WanWalletConnector({
+//   chainId: 888,
+//   url: 'https://gwan-ssl.wandevs.org:56891',
+//   pollingInterval: 15000,
+//   requestTimeoutMs: 300000
+// })
 
 // mainnet only
 export const fortmatic = new FortmaticConnector({

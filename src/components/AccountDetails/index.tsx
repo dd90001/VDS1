@@ -12,7 +12,8 @@ import Transaction from './Transaction'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
-import { injected, metamask } from '../../connectors'
+import {injected,metamask ,walletconnect} from '../../connectors'
+import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import Identicon from '../Identicon'
 import { ButtonSecondary } from '../Button'
 import { ExternalLink as LinkIcon } from 'react-feather'
@@ -246,10 +247,15 @@ export default function AccountDetails({
           <Identicon />
         </IconWrapper>
       )
-    }
-    return null
+    }else if (connector === walletconnect) {
+      return (
+        <IconWrapper size={16}>
+          <img src={WalletConnectIcon} alt={'wallet connect logo'} />
+        </IconWrapper>
+      )
   }
-
+    return null
+ }
   const clearAllTransactionsCallback = useCallback(() => {
     if (chainId) dispatch(clearAllTransactions({ chainId }))
   }, [dispatch, chainId])
@@ -267,7 +273,7 @@ export default function AccountDetails({
               <AccountGroupingRow>
                 {formatConnectorName()}
                 <div>
-                  {connector !== injected && (connector as any) !== metamask && (
+                  {connector !== injected && connector !== metamask  && connector !== walletconnect && (
                     <WalletAction
                       style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {

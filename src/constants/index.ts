@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@wanswap/sdk'
 import { AbstractConnector } from '@web3-react-wan/abstract-connector'
 
-import {  wanwallet, metamask, walletconnect } from '../connectors'
+import { metamask, walletconnect } from '../connectors'
 
 export const ROUTER_ADDRESS = '0xeA300406FE2eED9CD2bF5c47D01BECa8Ad294Ec1'
 
@@ -115,7 +115,7 @@ export interface WalletInfo {
   mobileOnly?: true
 }
 
-const SUPPORTED_WALLETS_CHROME: { [key: string]: WalletInfo } = {
+export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
 
   METAMASK: {
     connector: metamask,
@@ -137,25 +137,7 @@ const SUPPORTED_WALLETS_CHROME: { [key: string]: WalletInfo } = {
   },
 }
 
-const SUPPORTED_WALLETS_IN_WALLET: { [key: string]: WalletInfo } = {
-  WALLET_CONNECT: {
-    connector: walletconnect,
-    name: 'WalletConnect',
-    iconName: 'walletConnectIcon.svg',
-    description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
-    href: null,
-    color: '#4196FC',
-  },
-  WAN_WALLET: {
-    connector: wanwallet,
-    name: 'WanWallet',
-    iconName: 'wanchain-logo.png',
-    description: 'Connect to Wan Wallet.',
-    href: null,
-    color: '#4196FC',
-    mobile: true
-  }
-}
+
 
 declare global {
   interface Window {
@@ -163,12 +145,9 @@ declare global {
   }
 }
 
-export let SUPPORTED_WALLETS: { [key: string]: WalletInfo } = !window.injectWeb3 ? SUPPORTED_WALLETS_CHROME : SUPPORTED_WALLETS_IN_WALLET
 
-setTimeout(()=>{
-  SUPPORTED_WALLETS = SUPPORTED_WALLETS_CHROME
-  console.debug('update wallet');
-}, 500);
+
+
 
 export const NetworkContextName = 'NETWORK'
 
