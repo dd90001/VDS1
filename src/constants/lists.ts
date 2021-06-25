@@ -1,6 +1,6 @@
 // the Uniswap Default token list lives here
 // export const DEFAULT_TOKEN_LIST_URL = 'tokens.uniswap.eth'
-export const DEFAULT_TOKEN_LIST_URL = window.location.origin +'/VDS/wanswap.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = window.location.origin +'/VDS1/wanswap.tokenlist.json'
 
 console.log('DEFAULT_TOKEN_LIST_URL', DEFAULT_TOKEN_LIST_URL);
 

@@ -285,8 +285,7 @@ export default function WalletModal({
 
       // return rest of options
       return (
-        !isMobile &&
-        !option.mobileOnly && (
+  
           <Option
             id={`connect-${key}`}
             onClick={() => {
@@ -302,7 +301,7 @@ export default function WalletModal({
             subheader={null} //use option.descriptio to bring back multi-line
             icon={require('../../assets/images/' + option.iconName)}
           />
-        )
+      
       )
     })
   }
