@@ -166,7 +166,7 @@ export default function WalletModal({
 
   const tryActivation = async (connector: AbstractConnector | undefined) => {
     let name = ''
-      console.log(SUPPORTED_WALLETS,connector)
+      console.log(SUPPORTED_WALLETS,connector,111)
     Object.keys(SUPPORTED_WALLETS).map(key => {
       if (connector === SUPPORTED_WALLETS[key].connector) {
         return (name = SUPPORTED_WALLETS[key].name)
@@ -207,13 +207,13 @@ export default function WalletModal({
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
    const isMetamask = window.ethereum && window.ethereum.isMetaMask
-   console.log(SUPPORTED_WALLETS)
+   console.log(SUPPORTED_WALLETS,2222)
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
       if (isMobile) {
         //disable portis on mobile for now
-        if (option.name === 'walletconnect') {
+        if (option.name === 'WalletConnect') {
           return (
                     <Option
             id={`connect-${key}`}
