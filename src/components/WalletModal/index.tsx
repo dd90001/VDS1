@@ -205,14 +205,14 @@ export default function WalletModal({
 
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
-    const isWanchainMask = window.wanchain && window.wanchain.isWanchainMask
+   const isMetamask = window.ethereum && window.ethereum.isMetaMask
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       // check for mobile options
       if (isMobile) {
         //disable portis on mobile for now
  
-        if (!window.wanWeb3 && !window.wanchain && option.mobile) {
+        if (!window.wanWeb3 && !window.ethereum && option.mobile) {
           return (
             <Option
               onClick={() => {
@@ -253,11 +253,11 @@ export default function WalletModal({
           }
         }
         // don't return metamask if injected provider isn't metamask
-        else if (option.name === 'WanMask' && !isWanchainMask) {
+        else if (option.name === 'WanMask' && !isMetamask) {
           return null
         }
         // likewise for generic
-        else if (option.name === 'Injected' && isWanchainMask) {
+        else if (option.name === 'Injected' && isMetamask) {
           return null
         }
       }
