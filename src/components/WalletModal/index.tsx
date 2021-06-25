@@ -213,22 +213,7 @@ export default function WalletModal({
         //disable portis on mobile for now
  
    
-          return (
-            <Option
-              onClick={() => {
-                option.connector !== connector && !option.href && tryActivation(option.connector)
-              }}
-              id={`connect-${key}`}
-              key={key}
-              active={option.connector && option.connector === connector}
-              color={option.color}
-              link={option.href}
-              header={option.name}
-              subheader={null}
-              icon={require('../../assets/images/' + option.iconName)}
-            />
-             
-          )
+
 
         return null
       }
