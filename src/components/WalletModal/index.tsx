@@ -212,7 +212,7 @@ export default function WalletModal({
       if (isMobile) {
         //disable portis on mobile for now
  
-        if (!window.wanWeb3 && !window.ethereum && option.mobile) {
+   
           return (
             <Option
               onClick={() => {
@@ -229,26 +229,7 @@ export default function WalletModal({
             />
              
           )
-        return (
-  
-          <Option
-            id={`connect-${key}`}
-            onClick={() => {
-              option.connector === connector
-                ? setWalletView(WALLET_VIEWS.ACCOUNT)
-                : !option.href && tryActivation(option.connector)
-            }}
-            key={key}
-            active={option.connector === connector}
-            color={option.color}
-            link={option.href}
-            header={option.name}
-            subheader={null} //use option.descriptio to bring back multi-line
-            icon={require('../../assets/images/' + option.iconName)}
-          />
-      
-      )
-        }
+
         return null
       }
 
