@@ -30,7 +30,7 @@ export function getEtherscanLink(
   data: string,
   type: 'transaction' | 'token' | 'address' | 'block'
 ): string {
-  const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[888]}wanscan.org`
+  const prefix = `http://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[888]}my-vds.com`
 
   switch (type) {
     case 'transaction': {
