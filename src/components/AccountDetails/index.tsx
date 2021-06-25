@@ -12,7 +12,7 @@ import Transaction from './Transaction'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
-import {injected,metamask ,walletconnect} from '../../connectors'
+import {injected,walletconnect} from '../../connectors'
 import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import Identicon from '../Identicon'
 import { ButtonSecondary } from '../Button'
@@ -273,7 +273,7 @@ export default function AccountDetails({
               <AccountGroupingRow>
                 {formatConnectorName()}
                 <div>
-                  {connector !== injected && connector !== metamask  && connector !== walletconnect && (
+                  {connector !== injected   && connector !== walletconnect && (
                     <WalletAction
                       style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {
