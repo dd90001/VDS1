@@ -13,6 +13,7 @@ import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
 import {injected,walletconnect} from '../../connectors'
+
 import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import Identicon from '../Identicon'
 import { ButtonSecondary } from '../Button'

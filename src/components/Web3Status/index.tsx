@@ -5,7 +5,8 @@ import React, { useMemo } from 'react'
 import { Activity } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
-import { injected } from '../../connectors'
+import { injected,walletconnect} from '../../connectors'
+import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
 import { NetworkContextName } from '../../constants'
 import useENSName from '../../hooks/useENSName'
 import { useHasSocks } from '../../hooks/useSocksBalance'
@@ -21,7 +22,15 @@ import Loader from '../Loader'
 import { RowBetween } from '../Row'
 import WalletModal from '../WalletModal'
 
-
+const IconWrapper = styled.div<{ size?: number }>`
+  ${({ theme }) => theme.flexColumnNoWrap};
+  align-items: center;
+  justify-content: center;
+  & > * {
+    height: ${({ size }) => (size ? size + 'px' : '32px')};
+    width: ${({ size }) => (size ? size + 'px' : '32px')};
+  }
+  `
 const Web3StatusGeneric = styled(ButtonSecondary)`
   ${({ theme }) => theme.flexRowNoWrap}
   width: 100%;
@@ -121,7 +130,13 @@ const SOCK = (
 function StatusIcon({ connector }: { connector: AbstractConnector }) {
   if (connector === injected) {
     return <Identicon />
-  } 
+  } else if (connector === walletconnect) {
+    return (
+      <IconWrapper size={16}>
+        <img src={WalletConnectIcon} alt={''} />
+      </IconWrapper>
+    )
+  }
   return null
 }
 
