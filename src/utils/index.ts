@@ -44,7 +44,7 @@ export function getEtherscanLink(
     }
     case 'address':
     default: {
-      return `${prefix}/address/${data}`
+      return `${prefix}/#/address/${data}`
     }
   }
 }
