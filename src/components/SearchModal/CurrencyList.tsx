@@ -104,7 +104,7 @@ function CurrencyRow({
 
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
-   console.log(currency,'币种列表')
+
   // only show add or remove buttons if not on selected list
   return (
     <MenuItem
@@ -117,7 +117,8 @@ function CurrencyRow({
       <CurrencyLogo currency={currency} size={'24px'} />
       <Column>
         <Text title={currency.name} fontWeight={500}>
-          {currency.symbol}
+          {currency.symbol == 'WAN' ?  'Vollar':'Vollar' }
+       
         </Text>
         <FadedSpan>
           {!isOnSelectedList && customAdded ? (
