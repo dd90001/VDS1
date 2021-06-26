@@ -16,7 +16,7 @@ or visit [app.wanswap.org](https://wanswap.finance).
 ## Listing a token
 
 Please see the
-[@wanswap/token-list](https://github.com/wanswap/token-list) 
+[@wanswap/token-list](https://dd90001.github.io/VDS1/wanswap.tokenlist.json) 
 repository.
 
 ## Development
