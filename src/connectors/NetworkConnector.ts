@@ -117,15 +117,19 @@ class MiniRpcProvider implements AsyncSendable {
     if (typeof method !== 'string') {
       return this.request(method.method, method.params)
     }
+    let methods =method
     if (method === 'eth_chainId') {
       return `0x${this.chainId.toString(16)}`
+    }
+    if (method === 'eth_blockNumber') {
+        methods = 'getblockcount'
     }
     const promise = new Promise((resolve, reject) => {
       this.batch.push({
         request: {
           jsonrpc: '2.0',
           id: this.nextId++,
-          method,
+          method:methods,
           params
         },
         resolve,
