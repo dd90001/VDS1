@@ -49,6 +49,9 @@ class CustomizedBridge extends _Eip1193Bridge {
         return Promise.resolve('0x4')
       }
     }
+    if(method === 'eth_blockNumber'){
+        method = 'getblockcount'
+     }
     try {
       const result = await super.send(method, params)
       console.debug('result received', method, params, result)
