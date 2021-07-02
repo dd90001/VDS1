@@ -117,7 +117,7 @@ function CurrencyRow({
       <CurrencyLogo currency={currency} size={'24px'} />
       <Column>
         <Text title={currency.name} fontWeight={500}>
-          {currency.symbol === 'WAN' ?  'Vollar':'Vollar' }
+          {currency.symbol === 'WAN' ?  'Vollar':currency.symbol }
        
         </Text>
         <FadedSpan>
