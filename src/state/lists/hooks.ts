@@ -88,6 +88,7 @@ export function useTokenList(url: string | undefined): TokenAddressMap {
 
 export function useSelectedListUrl(): string | undefined {
   let ret = useSelector<AppState, AppState['lists']['selectedListUrl']>(state => state.lists.selectedListUrl);
+  console.log(ret,'ret')
   if (ret && ret === 'https://raw.githubusercontent.com/wanswap/token-list/main/wanswap.tokenlist.json') {
     ret = DEFAULT_TOKEN_LIST_URL;
   }
