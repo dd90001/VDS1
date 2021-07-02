@@ -57,6 +57,7 @@ export default function AddLiquidity({
       ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
         (currencyB && currencyEquals(currencyB, WETH[chainId])))
   )
+  console.log(currencyA,'currencyA')
 
   const toggleWalletModal = useWalletModalToggle() // toggle wallet when disconnected
 
@@ -120,7 +121,7 @@ export default function AddLiquidity({
   // check whether the user has approved the router on the tokens
   const [approvalA, approveACallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_A], ROUTER_ADDRESS)
   const [approvalB, approveBCallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_B], ROUTER_ADDRESS)
-
+ console.log(approvalA,'approvalA')
   const addTransaction = useTransactionAdder()
 
   async function onAdd() {
