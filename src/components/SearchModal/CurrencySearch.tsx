@@ -50,7 +50,7 @@ export function CurrencySearch({
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [invertSearchOrder, setInvertSearchOrder] = useState<boolean>(false)
   const allTokens = useAllTokens()
-  console.log(allTokens,'all')
+
   // if they input an address, use it
   const isAddressSearch = isAddress(searchQuery)
   const searchToken = useToken(searchQuery)
@@ -71,7 +71,7 @@ export function CurrencySearch({
   }, [searchQuery])
 
   const tokenComparator = useTokenComparator(invertSearchOrder)
-
+  console.log(tokenComparator)
   const filteredTokens: Token[] = useMemo(() => {
     if (isAddressSearch) return searchToken ? [searchToken] : []
     return filterTokens(Object.values(allTokens), searchQuery)
