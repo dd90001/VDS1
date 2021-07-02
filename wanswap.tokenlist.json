@@ -11,6 +11,14 @@
       "symbol": "FV",
       "decimals": 18,
       "logoURI": "https://admin.vdsvv.org/upload/20210518/440424105963f440dcbdc849ff29c7c6.png"
+    },
+       {
+      "chainId": 888,
+      "address": "0x2838bac0d7ec97bd979912f815a71eead0bb981e",
+      "name": "SDT",
+      "symbol": "SDT",
+      "decimals": 18,
+      "logoURI": "https://admin.vdsvv.org/upload/20210518/91ae69381ef28b9e379776963058c429.png"
     }
  
   ],
