@@ -1,6 +1,6 @@
 {
   "name": "VDSWAP",
-  "logoURI": "https://api.vdswap.com/logo.png",
+  "logoURI": "https://www.vdswap.com/logo.png",
   "keywords": ["defi", "vdswap", "yield"],
   "timestamp": "2021-03-12T03:40:34.305Z",
   "tokens": [
@@ -9,16 +9,68 @@
       "address": "0xb9242bfdaf85ae907e9856498a14ff24aad08ed1",
       "name": "FV",
       "symbol": "FV",
-      "decimals": 18,
-      "logoURI": "https://admin.vdsvv.org/upload/20210518/440424105963f440dcbdc849ff29c7c6.png"
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/FV.png"
     },
        {
       "chainId": 888,
       "address": "0x2838bac0d7ec97bd979912f815a71eead0bb981e",
       "name": "SDT",
       "symbol": "SDT",
-      "decimals": 18,
-      "logoURI": "https://admin.vdsvv.org/upload/20210518/91ae69381ef28b9e379776963058c429.png"
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/SDT.png"
+    },
+           {
+      "chainId": 888,
+      "address": "0x391dab6ca1539313092dc5fe714c19f397559e16",
+      "name": "DV",
+      "symbol": "DV",
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/DV.png"
+    },
+           {
+      "chainId": 888,
+      "address": "0x15702def625b6b87041e00310d057c4d82c390cb",
+      "name": "GGB",
+      "symbol": "GGB",
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/GGB.png"
+    }
+    ,
+           {
+      "chainId": 888,
+      "address": "0x96bd3c1cdbe8756548ddac3b61bebaa7a81553c9",
+      "name": "LV",
+      "symbol": "LV",
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/LV.png"
+    }
+    ,
+           {
+      "chainId": 888,
+      "address": "0x2b8812e607eeedad5633ddaf8b622164250074fc",
+      "name": "ONE",
+      "symbol": "ONE",
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/ONE.png"
+    }
+    ,
+           {
+      "chainId": 888,
+      "address": "0xf7a702150eeb8d6f22235a9a789c8f5720eaaf7f",
+      "name": "SC",
+      "symbol": "SC",
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/SC.png"
+    }
+      ,
+           {
+      "chainId": 888,
+      "address": "0x1d0a38ccdc3b687ee15268c4de50b9d6f4affaee",
+      "name": "USDT",
+      "symbol": "USDT",
+      "decimals": 8,
+      "logoURI": "https://www.vdswap.com/uniswap-interface/public/images/USDT.png"
     }
  
   ],
