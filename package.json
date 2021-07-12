@@ -3,6 +3,7 @@
   "description": "vdswap Interface",
   "homepage": "https://dd90001.github.io/VDS1",
   "private": true,
+  "proxy": "https://rpc.vdswap.com",
   "devDependencies": {
     "@ethersproject/experimental": "^5.0.1",
     "@popperjs/core": "^2.4.4",
